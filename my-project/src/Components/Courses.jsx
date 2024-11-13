@@ -8,15 +8,24 @@ const Corses = () => {
     { id: 2, title: 'Mechanical Engineering', image: '/images/22.jpg' },
     { id: 3, title: 'Civil Engineering', image: '/images/33.jpg' },
     { id: 4, title: 'Electrical Engineering', image: '/images/44.jpg' },
+    { id: 5, title: 'Automation Engeneering', image: 'https://omdayal.com/wp-content/uploads/2022/05/aie-1.jpg' },
+    { id: 6, title: 'Bigdata Engineering', image: 'https://cloudxlab.com/blog/wp-content/uploads/2018/04/why-Big-Data-Career-is-a-smart-choice.jpg' },
+    { id: 7, title: 'AI Engineering', image: 'https://aidegreeguide.com/wp-content/uploads/2023/11/ai-engineer.jpg' },
+    { id: 8, title: 'Architucture Engineering', image: 'https://coceg-group.com/wp-content/uploads/2020/08/Architectural-Engineering.jpg' },
+ 
   ];
 
   return (
-    <div className="mx-auto xl:p-10 p-3">
+    <div className="mx-auto xl:p-10 p-3 bg-[url('https://iticollege.edu/wp-content/uploads/2023/02/Electrical-Automation-Technology-School.jpg')] relative">
+      <h1 className='relative text-[#A0CE4E] text-4xl font-bold text-center z-50 '>Our Preferred courses</h1>
+      <div className="absolute inset-0 bg-black opacity-80">
+           </div>
+      
       <section className="relative mx-auto flex overflow-x-auto xl:overflow-x-hidden gap-6 xl:grid xl:grid-cols-4 xl:p-12 xl:gap-10">
         {cards.map((card) => (
           <div
             key={card.id}
-            className="group relative min-w-[16rem] sm:min-w-[18rem] md:min-w-[20rem] bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="group relative min-w-[16rem]  sm:min-w-[18rem] md:min-w-[20rem] bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <img
               src={card.image}

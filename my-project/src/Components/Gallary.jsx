@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaGripLinesVertical } from "react-icons/fa";
 
 const Gallary = () => {
-    const [active, setActive] = useState("https://www.gopalancolleges.com/gpuc/images/home-blog/gcc-campus.jpg");
+    const [active, setActive] = useState("https://zolostays.com/blog/wp-content/uploads/2024/02/acharya-institute-of-technology-bangalore.jpg");
   const data = [
     { imgelink: "https://zolostays.com/blog/wp-content/uploads/2024/02/acharya-institute-of-technology-bangalore.jpg" },
     { imgelink: "https://www.acharya.ac.in/demo/about/img/overview/11.webp" },

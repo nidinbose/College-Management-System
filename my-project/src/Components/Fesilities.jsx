@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react'; // Import useState here
+import React, { useState, useRef } from 'react';
 import { FaGripLinesVertical, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import './css/Fesilities.css';
 
 const pics = [
   { photo: "https://www.tajglobalacademy.com/Uploads/fileupload/33ICT-Lab.jpg", title: "Computer lab" },
   { photo: "https://www.topmastersineducation.com/wp-content/uploads/2020/05/10-Universities-and-Colleges-With-Beautiful-or-Unusual-Libraries.jpg", title: "Library" },
-  { photo: "https://www.topmastersineducation.com/wp-content/uploads/2020/05/10-Universities-and-Colleges-With-Beautiful-or-Unusual-Libraries.jpg", title: "Classroom" },
-  { photo: "https://www.topmastersineducation.com/wp-content/uploads/2020/05/10-Universities-and-Colleges-With-Beautiful-or-Unusual-Libraries.jpg", title: "Lab" },
-  { photo: "https://www.topmastersineducation.com/wp-content/uploads/2020/05/10-Universities-and-Colleges-With-Beautiful-or-Unusual-Libraries.jpg", title: "Entertainment" },
+  { photo: "https://www.shutterstock.com/image-photo/modern-classroom-school-600nw-2492778895.jpg", title: "Classrooms" },
+  { photo: "https://www.bgsu.edu/content/dam/BGSU/news/2021/12/nursing/Nursing-A20I1243.jpg", title: "Lab" },
+  { photo: "https://www.sportcourtma.com/wp-content/uploads/2021/07/Wayland-30-x-50-1.jpg", title: "Entertainment" },
 ];
 
 const Fesilities = () => {
@@ -24,21 +24,16 @@ const Fesilities = () => {
 
   return (
     <div className="relative w-full h-full">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-[url('https://admission.brown.edu/sites/default/files/styles/ultrawide_med/public/2020-06/Hosted-Virtual-Campus-Tour-banner-larger.jpg?h=298f6650&itok=Px6xB336')] bg-cover bg-center" />
-      <div className="absolute inset-0 bg-blue-500 opacity-60"></div> {/* Blue Overlay */}
-      
-      {/* Content Section */}
-      <section className="relative z-10 flex flex-col items-center text-white text-center p-6 space-y-8 pb-10">
-        {/* Title Section */}
-        <div className="w-full max-w-4xl p-4 bg-opacity-75 rounded-lg flex flex-col items-start">
+        <div className="absolute inset-0 bg-[url('https://admission.brown.edu/sites/default/files/styles/ultrawide_med/public/2020-06/Hosted-Virtual-Campus-Tour-banner-larger.jpg?h=298f6650&itok=Px6xB336')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-black opacity-70"></div>
+        <section className="relative z-10 flex flex-col items-center text-white text-center p-6 space-y-8 pb-10">
+              <div className="w-full p-4 bg-opacity-75 rounded-lg flex  items-start pb-10">
+        <FaGripLinesVertical className="text-[#A0CE4E] text-3xl mr-2 " />
           <h1 className="text-4xl md:text-2xl lg:text-4xl font-semibold flex items-center">
-            <FaGripLinesVertical className="text-[#A0CE4E] text-3xl mr-2 mb-5" />
+           
             Providing World-Class Facilities
           </h1>
         </div>
-
-        {/* Carousel Navigation Arrows */}
         <div className="relative flex items-center justify-center w-full mb-4">
           <button
             onClick={scrollLeft}
@@ -53,8 +48,6 @@ const Fesilities = () => {
             <FaArrowRight />
           </button>
         </div>
-
-        {/* Image Carousel */}
         <div ref={scrollRef} className="flex items-center overflow-x-auto mt-3 scrollbar-hide gap-1" id="scrollbar">
           {pics.map((pic, index) => (
             <div
@@ -70,9 +63,10 @@ const Fesilities = () => {
                 alt={pic.title}
                 className="h-[50vh] w-full object-cover transition-transform duration-300 hover:scale-105"
               />
-              <h1 className="absolute bottom-3 left-7 font-bold text-white text-center py-2 text-4xl">
+              <h1 className="absolute bottom-3 left-7 font-bold text-white text-center py-2 text-4xl ">
                 {pic.title}
               </h1>
+         
             </div>
           ))}
         </div>

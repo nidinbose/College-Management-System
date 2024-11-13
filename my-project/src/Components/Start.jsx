@@ -24,7 +24,7 @@ const Start = () => {
       className='relative w-full min-h-screen bg-cover bg-center py-24 px-4 flex items-center justify-center transition-all duration-500 ease-in-out'
       style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
     >
-      <div className='absolute inset-0 bg-black opacity-50'></div> {/* Dark overlay */}
+      <div className='absolute inset-0 bg-black opacity-70'></div> 
       <div
         className='absolute inset-0 transform scale-100 hover:scale-105 transition-transform duration-700 ease-in-out'
         style={{ backgroundImage: `url(${images[currentImageIndex]})`, zIndex: -1 }}

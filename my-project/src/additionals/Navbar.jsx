@@ -69,7 +69,7 @@ const Navbar = () => {
         { name: 'Contact Us', path: '/contact' },
       ];
     return (
-        <div className="w-full bg-transparent z-50 absolute top-0 left-0 hover:bg-white hover:text-black text-white font-semibold text-md">
+        <div className="w-full bg-transparent z-50 absolute top-0 left-0 hover:bg-white hover:text-black text-white font-semibold text-md font-amst">
         <div className="p-4 md:max-w-[1080px] mx-auto flex justify-between items-center">
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center space-x-12 mx-auto">

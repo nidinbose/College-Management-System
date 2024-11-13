@@ -10,11 +10,19 @@ const Feedback = () => {
   ]
 
   return (
-    <div className="xl:p-10 relative h-full bg-white ">
+    <div className="xl:p-10 relative h-full absolute inset-0 bg-[url('https://img.freepik.com/premium-photo/school-principal-office-room-professional-advertising-photography-ai-generated_925376-3513.jpg')] bg-cover bg-center ">
+      <div className="absolute inset-0 bg-white opacity-70"></div>
     
-         <h1 className='p-18  flex items-center justify-start text-2xl mb-9 mt-6 text-[#1B2C39] font-bold'>
-           <span><FaGripLinesVertical className='text-[#A0CE4E] text-3xl mr-5'/></span>
-            WE WELCOME YOU TO <span className='text-[#A0CE4E] ml-2'>CAMBRIDGE GROUP OF INSTITUTIONS</span></h1>
+        <div className='z-50 relative'>
+        <h1 className="px-4 py-6 md:px-10 md:py-10 lg:px-18 lg:py-12 flex items-center justify-start text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 md:mb-8 lg:mb-9 z-30 mt-4 md:mt-5 lg:mt-6 text-[#002D62] font-bold">
+   <span>
+      <FaGripLinesVertical className="text-[#A0CE4E] text-2xl md:text-3xl mr-3 md:mr-4 lg:mr-5" />
+   </span>
+   WE WELCOME YOU TO
+CAMBRIDGE GROUP OF INSTITUTIONS
+</h1>
+
+        </div>
       <div className=" z-10 flex items-center justify-center h-full ">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 py-8 w-full ">
@@ -27,7 +35,7 @@ const Feedback = () => {
                 <img
                   src={data.image}
                   alt={data.name}
-                  className="w-full h-96  object-cover "
+                  className="w-full h-96  object-cover filter brightness-50 hover:brightness-100"
                 />
               )}
               <h2 className="text-white text-2xl mt-4 absolute bottom-[80px] p-8 font-bold">{data.designation}</h2>

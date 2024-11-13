@@ -18,23 +18,16 @@ const Site = () => {
 
     return (
         <div>
-            
             <Start />
-            <Feedback/>
-            <Companies />
-            <Achievement />
-            <br />
-            <br />
-            <Courses />
-            <Categories />
            
-        
+            <Courses />
+            <Achievement />
+            <Companies />
+            <Categories />
             <Fesilities/>
-               
+            <Feedback/>
             <Gallery />
             <Slide1 />
-            
-      
            
         </div>
     );

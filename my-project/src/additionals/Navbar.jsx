@@ -75,7 +75,8 @@ const Navbar = () => {
         <div className="p-4 md:max-w-[1080px] mx-auto flex justify-between items-center">
            <div className="hidden md:flex items-center space-x-12 mx-auto ">
            <ul className="flex gap-10 items-center justify-center">
-  <li className="text-sm sm:text-md lg:text-lg">Apply Now</li>
+  <Link to={`/applaynow`}>
+  <li className="text-sm sm:text-md lg:text-lg">Apply Now</li></Link>
   <li className="text-sm sm:text-md lg:text-lg">Affiliations</li>
   
   <Link to={`/campus`}>
@@ -113,7 +114,7 @@ const Navbar = () => {
       </div>
     )}
   </li>
-  <Link to={`/`}>
+  <Link to={`/contact`}>
     <li className="text-sm sm:text-md lg:text-lg">Contact us</li>
   </Link>
 </ul>

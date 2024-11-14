@@ -43,6 +43,8 @@ import AddCourse from './additionals/Admin/addCourse';
 import CourseOverview from './additionals/Admin/CourseOverview';
 import Campustour from './Navlist/Campustour';
 import CoursesList from './Navlist/CoursesList';
+import Contact from './Contact';
+import CollegeApplicationForm from './Navlist/Collegeapplicationform';
 
 
 
@@ -94,6 +96,8 @@ const App=()=>{
       <Route path='/courseoverview/:id' Component={CourseOverview}/>
       <Route path='/campus' Component={Campustour}/>
       <Route path='/CL' Component={CoursesList}/>
+      <Route path='/contact' Component={Contact}/>
+      <Route path='/applaynow' Component={CollegeApplicationForm}/>
       
       </Routes>
       <Footer/>

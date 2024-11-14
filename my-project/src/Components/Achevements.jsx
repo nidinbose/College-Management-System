@@ -6,10 +6,10 @@ import { FaPeopleCarry } from 'react-icons/fa'
 
 const Achievement = () => {
   return (
-    <section className='w-full bg-[url("https://www.asmibmr.edu.in/wp-content/uploads/2023/02/image001.jpg")] p-5 inset-0 relative'
+    <section className='w-full bg-[url("https://www.asmibmr.edu.in/wp-content/uploads/2023/02/image001.jpg")] p-5 inset-0 relative pt-[10vh] pb-[10vh]'
 
   >
-       <div className="absolute inset-0 bg-black opacity-70"></div>
+       <div className="absolute inset-0 bg-black opacity-90"></div>
       <motion.div 
         className='max-w-screen-xl mx-auto grid lg:grid-cols-2 grid-cols-1 gap-8 z-50 relative'
         initial={{ opacity: 0, y: 50 }}

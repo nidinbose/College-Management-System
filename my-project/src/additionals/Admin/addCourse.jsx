@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavLR from '../../Navlist/NavLR';
 
 const AddCourse = () => {
     const [data, setData] = useState({
@@ -44,6 +45,7 @@ const AddCourse = () => {
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-md shadow-lg mt-10">
+            /<NavLR/>
             <h2 className="text-2xl font-semibold mb-4">Add New Course</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

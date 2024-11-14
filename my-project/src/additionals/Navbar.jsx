@@ -63,6 +63,7 @@ const Navbar = () => {
         setToggle(false);
     };
     const nav = [
+      { name: 'Home', path: '/' },
         { name: 'Apply Now', path: '/apply' },
         { name: 'Affiliations', path: '/affiliations' },
         { name: 'Campus Tour', path: '/tour' },
@@ -112,7 +113,7 @@ const Navbar = () => {
       </div>
     )}
   </li>
-  <Link to={`/CL`}>
+  <Link to={`/`}>
     <li className="text-sm sm:text-md lg:text-lg">Contact us</li>
   </Link>
 </ul>
@@ -150,23 +151,31 @@ const Navbar = () => {
           </div>
 
           
-          <div className="flex flex-col items-center mt-8 space-y-4">
-            {nav.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                className="text-xl text-gray-800 hover:text-[#A0CE4E] transition duration-300"
-                onClick={closeMenu}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="mt-8">
-              <button className="px-8 py-5 bg-[#208446] text-white rounded-lg shadow-md hover:bg-[#1c6c34] transition duration-300">
-                Sign up for free
-              </button>
-            </div>
-          </div>
+          <div className="flex flex-col items-center mt-8 space-y-4 w-full px-4 ">
+  {/* Navigation Links */}
+  {nav.map((item, index) => (
+    <Link
+      key={index}
+      to={item.path}
+      className="text-lg md:text-xl border w-60 text-center h-12 flex  items-center justify-center border-[#A0CE4E] text-[#A0CE4E] hover:text-[#A0CE4E] transition duration-300"
+      onClick={closeMenu}
+    >
+      {item.name}
+      {/* <hr className="h-5 w-full"/> */}
+    </Link>
+  ))}
+  
+  {/* Sign Up Button */}
+  <div className="mt-8 w-full flex flex-col items-center justify-center ">
+  <button className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] mb-3 text-white rounded-lg shadow-md hover:bg-[#1c6c34] transition duration-300">
+      Login
+    </button>
+    <button className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300">
+      Logout
+    </button>
+  </div>
+</div>
+
         </motion.ul>
       </div>
    

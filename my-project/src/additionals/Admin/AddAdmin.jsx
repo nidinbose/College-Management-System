@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import NavLR from "../../Navlist/NavLR";
 
 const AddAdmin = () => {
   const [formData, setFormData] = useState({
@@ -67,6 +68,7 @@ const AddAdmin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-400 via-teal-500 to-blue-600 flex items-center justify-center p-6">
+      <NavLR/>
       <motion.div
         className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full"
         initial={{ opacity: 0, y: 50 }}

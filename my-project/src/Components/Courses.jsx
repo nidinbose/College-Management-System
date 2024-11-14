@@ -21,8 +21,8 @@ const Corses = () => {
   }, []);
 
   return (
-    <div className="mx-auto xl:p-10 p-3 bg-[url('https://iticollege.edu/wp-content/uploads/2023/02/Electrical-Automation-Technology-School.jpg')] relative">
-      <h1 className='relative text-[#A0CE4E] text-4xl font-bold text-center z-50 '>Our Preferred Courses</h1>
+    <div className="mx-auto xl:p-10 p-3 bg-[url('https://iticollege.edu/wp-content/uploads/2023/02/Electrical-Automation-Technology-School.jpg')] relative pt-7">
+      <h1 className='relative text-[#A0CE4E] text-4xl font-bold text-center z-50 mb-10  '>Our Preferred Courses</h1>
       <div className="absolute inset-0 bg-black opacity-80"></div>
       
       <section className="relative mx-auto flex overflow-x-auto xl:overflow-x-hidden gap-6 xl:grid xl:grid-cols-4 xl:p-12 xl:gap-10">

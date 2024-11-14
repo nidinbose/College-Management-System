@@ -41,6 +41,8 @@ import Notifications from './additionals/Students/Noifications';
 import Fesilities from './Components/Fesilities';
 import AddCourse from './additionals/Admin/addCourse';
 import CourseOverview from './additionals/Admin/CourseOverview';
+import Campustour from './Navlist/Campustour';
+import CoursesList from './Navlist/CoursesList';
 
 
 
@@ -50,55 +52,49 @@ const App=()=>{
       <BrowserRouter>
     <Navbar/>
       <Routes>
-
-
       <Route path='/' Component={Site}/>
 
-      <Route exact path='/login' Component={Login}/>
-      <Route path='/students' Component={Students}/>
-      <Route path='/staff' Component={Staff}/>
       <Route path='/admin'  Component={Admin}/>
-      <Route path='/signup' Component={Signup}/>
+      <Route path='/addstaff' Component={AddStaff}/>
+      <Route path='/addadmin' Component={AddAdmin}/>
+      <Route path='/vstaff' Component={StaffView}/>
+      <Route path='/editstaff/:id' Component={EditStaff}/>
+      <Route path='/editstudents/:id' Component={EditStudents}/>
+      <Route path='/marklist' Component={Marklist}/>
+      <Route path='/addcourse' Component={AddCourse}/>
+
+
+      <Route exact path='/login' Component={Login}/>
       <Route path='/forgot-password' Component={ForgotEmail}/>
       <Route path='/resetpassword' Component={ResetPassword}/>
       <Route path='/ssignup' Component={SSignup}/>
-     
+      <Route path='/signup' Component={Signup}/>
+
+
+      <Route path='/students' Component={Students}/>
+      <Route path='/view/:id' Component={ViewStudent}/>
+      <Route path='/studentviewsd' Component={StudentViewSD}/>
+
+
+      <Route path='/staff' Component={Staff}/>
       <Route path='/addstudents' Component={AddStudents}/>
-     <Route path='/addstaff' Component={AddStaff}/>
-      <Route path='/addadmin' Component={AddAdmin}/>
       <Route path='/vstudent' Component={StudentView}/>
-      <Route path='/vstaff' Component={StaffView}/>
       <Route path='/addmarks' Component={AddMarksForm}/>
       <Route path='/getmarks/:id' Component={ViewMark}/>
-
-      <Route path='/editstudents/:id' Component={EditStudents}/>
-      <Route path='/view/:id' Component={ViewStudent}/>
-      {/* <Route path='/view1/:id' Component={ViewStudentt}/> */}
       <Route path='/views/:id' Component={ViewStaff}/>
       <Route path='/editstudent/:id' Component={StudentsEdit}/>
-      <Route path='/editstaff/:id' Component={EditStaff}/>
-         <Route path='/feedback' Component={Feedback}/>
+     
+      <Route path='/feedback' Component={Feedback}/>
       <Route path='/gallary' Component={Gallery}/>
       <Route path='/courses' Component={Corses}/>
-      {/* <Route path='/addmark' Component={AddMark}/> */}
       <Route path='/admissions' Component={Admissions}/>
-
-      <Route path='/studentviewsd' Component={StudentViewSD}/>
-      <Route path='/marklist' Component={Marklist}/>
       <Route path='/fees' Component={FeeStructure}/>
       <Route path='/notify' Component={Notifications}/>
       <Route path='/fesilities' Component={Fesilities}/>
-      <Route path='/addcourse' Component={AddCourse}/>
       <Route path='/courseoverview/:id' Component={CourseOverview}/>
-
+      <Route path='/campus' Component={Campustour}/>
+      <Route path='/CL' Component={CoursesList}/>
       
-
-
-
-
-
-     
-
       </Routes>
       <Footer/>
       </BrowserRouter>

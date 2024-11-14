@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import axios from 'axios';
-
+import { CiMenuFries } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
 const nav = [
     { name: "Home", path: '/' },
     { name: "About", path: '/feedback' },
@@ -69,89 +70,86 @@ const Navbar = () => {
         { name: 'Contact Us', path: '/contact' },
       ];
     return (
-        <div className="w-full bg-transparent z-50 absolute top-0 left-0 hover:bg-white hover:text-black text-white font-semibold text-md font-amst">
+        <div className="w-full bg-transparent z-50 absolute top-0 left-0 hover:bg-white hover:text-black text-[#A0CE4E] font-semibold text-md font-amst">
         <div className="p-4 md:max-w-[1080px] mx-auto flex justify-between items-center">
-          {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-12 mx-auto">
-            <ul className="flex gap-10 items-center justify-center">
-              <li className=" text-md ">Apply Now</li>
-              <li>Affiliations</li>
-          
-              <li>Campus Tour</li>
+           <div className="hidden md:flex items-center space-x-12 mx-auto ">
+           <ul className="flex gap-10 items-center justify-center">
+  <li className="text-sm sm:text-md lg:text-lg">Apply Now</li>
+  <li className="text-sm sm:text-md lg:text-lg">Affiliations</li>
   
-              {/* Logo */}
-              <li>
-                <button>
-                  <Link to="/">
-                    <img
-                      src="/images/pl.png"
-                      alt="Logo"
-                      className="h-full cursor-pointer rounded-full w-20 h-20"
-                    />
-                  </Link>
-                </button>
-              </li>
-  
-      
-  
-              {/* Courses Dropdown */}
-              <li className="relative">
-            {/* Toggle dropdown on click */}
-            <button onClick={toggleDropdown} className="cursor-pointer">
-                Courses
-            </button>
-            {/* Dropdown menu, visible only when isDropdownOpen is true */}
-            {isDropdownOpen && (
-                <div className="absolute mt-2 bg-white border border-gray-300 shadow-lg rounded-md w-40">
-                    <ul className="flex flex-col">
-                        <li className="p-2 hover:bg-gray-100 cursor-pointer">Course 1</li>
-                        <li className="p-2 hover:bg-gray-100 cursor-pointer">Course 2</li>
-                        <li className="p-2 hover:bg-gray-100 cursor-pointer">Course 3</li>
-                    </ul>
-                </div>
-            )}
-        </li>
+  <Link to={`/campus`}>
+    <li className="text-sm sm:text-md lg:text-lg">Campus Tour</li>
+  </Link>
 
-              <li>Accounts</li>
-  
-              <li>Contact Us</li>
-            </ul>
+  <li>
+    <button>
+      <Link to="/">
+        <img
+          src="/images/pl.png"
+          alt="Logo"
+          className="h-full cursor-pointer rounded-full w-20 h-20"
+        />
+      </Link>
+    </button>
+  </li>
+
+  <Link to={`/CL`}>
+    <li className="text-sm sm:text-md lg:text-lg">Courses</li>
+  </Link>
+
+  <li className="relative text-sm sm:text-md lg:text-lg">
+    <button onClick={toggleDropdown} className="cursor-pointer">
+      Accounts
+    </button>
+    {isDropdownOpen && (
+      <div className="absolute mt-2 bg-transparant w-40">
+        <ul className="flex flex-col">
+          {/* <li className="p-2 hover:bg-gray-100 hover:text-white cursor-pointer text-sm sm:text-md lg:text-lg">Account Settings</li> */}
+          
+          <button className="p-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-md lg:text-lg">Login</button>
+          <button className="p-2 bg-red-600 hover:bg-red-500 cursor-pointer text-sm sm:text-md lg:text-lg">Logout</button>
+        </ul>
+      </div>
+    )}
+  </li>
+  <Link to={`/CL`}>
+    <li className="text-sm sm:text-md lg:text-lg">Contact us</li>
+  </Link>
+</ul>
+
           </div>
   
-          {/* Mobile Hamburger Menu */}
-          <motion.div
+                   <motion.div
             whileTap={{ scale: 0.8 }}
-            className="md:hidden cursor-pointer"
+            className="md:hidden cursor-pointer flex gap-[35vw]"
             onClick={handleToggle}
           >
-            <img
-              src="/path/to/hamburger-icon.png"
-              alt="Menu"
-              className="w-8 h-8"
-            />
+           <CiMenuFries className="w-7 h-7 font-bold"/>
+           <div>
+            <img src="/images/pl.png" alt="p1" className="w-10 h-10 rounded-full" />
+          </div>
           </motion.div>
         </div>
-  
-        {/* Mobile Menu */}
-        <motion.ul
+          <motion.ul
           initial={{ opacity: 0, x: 200 }}
           animate={toggle ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
           transition={{ duration: 0.3 }}
           className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white shadow-lg z-50 ${toggle ? 'translate-x-0' : '-translate-x-full'}`}
         >
+
+
           <div className="flex justify-end p-4">
             <motion.div
               whileTap={{ scale: 0.8 }}
               className="cursor-pointer"
               onClick={closeMenu}
             >
-              <img
-                src="/path/to/close-icon.png"
-                alt="Close"
-                className="w-8 h-8"
-              />
+
+            <IoClose className="w-7 h-7 font-bold"/>
             </motion.div>
           </div>
+
+          
           <div className="flex flex-col items-center mt-8 space-y-4">
             {nav.map((item, index) => (
               <Link

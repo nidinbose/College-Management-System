@@ -6,6 +6,7 @@ import nodemailer from 'nodemailer'
 import studentsSchema from './models/students.model.js'
 import staffSchema from './models/staff.model.js'
 import Mark from './models/marks.model.js'
+import courseSchema from './models/course.model.js'
 
 
 
@@ -497,3 +498,42 @@ export async function userCount(req, res) {
 }
 
 // Courses add section
+
+export async function addCourses (req,res){
+  const {photo,title,description,fees,year,head}=req.body
+
+if(!(photo&&title&&description&&fees&&year&&head))
+  return res.status(400).send("fields are empty")
+
+ const data=await courseSchema.create({photo,description,title,fees,year,head}).then((data)=>{
+  return res.status(200).json({msg:"added succesfully"})
+ }).catch((error)=>{
+  return res.status(500).json({msg:"error"})
+ })
+}
+
+export async function getCourse(req,res){
+  try {
+    const data=await courseSchema.find({}).then((data)=>{
+      return res.status(200).send(data)
+    }).catch((error)=>{
+      return res.status(400).send("error in finding")
+    })
+  } catch (error) {
+    return res.status(500).send("error in getting code")
+  }
+}
+
+export async function getCourseId(req,res){
+  try {
+    const {id}=req.params
+    const data=await courseSchema.findOne({_id:id}).then((data)=>{
+      return res.status(200).send(data)
+    })
+    if(!data)
+      return res.status(400).send("Error in getting")
+    
+  } catch (error) {
+    return res.status(500).send("internal error")
+  }
+}

@@ -39,6 +39,8 @@ import Footer from './Components/Footer';
 import FeeStructure from './additionals/Students/FeeStructure';
 import Notifications from './additionals/Students/Noifications';
 import Fesilities from './Components/Fesilities';
+import AddCourse from './additionals/Admin/addCourse';
+import CourseOverview from './additionals/Admin/CourseOverview';
 
 
 
@@ -86,6 +88,9 @@ const App=()=>{
       <Route path='/fees' Component={FeeStructure}/>
       <Route path='/notify' Component={Notifications}/>
       <Route path='/fesilities' Component={Fesilities}/>
+      <Route path='/addcourse' Component={AddCourse}/>
+      <Route path='/courseoverview/:id' Component={CourseOverview}/>
+
       
 
 

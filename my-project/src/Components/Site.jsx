@@ -21,9 +21,9 @@ const Site = () => {
             <Start />
            
             <Courses />
+            <Categories />
             <Achievement />
             <Companies />
-            <Categories />
             <Fesilities/>
             <Feedback/>
             <Gallery />

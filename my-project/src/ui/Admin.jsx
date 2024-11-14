@@ -125,6 +125,11 @@ const Admin = () => {
               </Link>
             </li>
             <li>
+              <Link to="/addcourse" className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded">
+                <FaBook /> Add course
+              </Link>
+            </li>
+            <li>
               <button onClick={handleLogout} className="w-full py-2 mt-4 bg-red-500 rounded">
                 Logout
               </button>

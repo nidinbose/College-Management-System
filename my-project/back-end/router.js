@@ -36,6 +36,9 @@ router.route('/addmarks').post(request.addMarks)
 router.route('/getmarkedit/:studentid').get(request.getMarkEdit)
 // router.route('/getmark/:id').get(request.getMarkEdit)
 router.route('/getmarklist').get(request.getMarklist)
+router.route('/addcourse').post(request.addCourses)
+router.route('/getcourse').get(request.getCourse)
+router.route('/getcourseid/:id').get(request.getCourseId)
 
 
 

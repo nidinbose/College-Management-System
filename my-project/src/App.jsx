@@ -45,14 +45,19 @@ import Campustour from './Navlist/Campustour';
 import CoursesList from './Navlist/CoursesList';
 import Contact from './Contact';
 import CollegeApplicationForm from './Navlist/Collegeapplicationform';
+import Sidebar from './Navlist/Sidebar';
 
 
 
 
 const App=()=>{
+
+
     return(
       <BrowserRouter>
     <Navbar/>
+   
+  
       <Routes>
       <Route path='/' Component={Site}/>
 

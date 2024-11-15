@@ -106,10 +106,14 @@ const Navbar = () => {
     {isDropdownOpen && (
       <div className="absolute mt-2 bg-transparant w-40">
         <ul className="flex flex-col">
-          {/* <li className="p-2 hover:bg-gray-100 hover:text-white cursor-pointer text-sm sm:text-md lg:text-lg">Account Settings</li> */}
-          
-          <button className="p-2 hover:bg-gray-100 cursor-pointer text-sm sm:text-md lg:text-lg">Login</button>
-          <button className="p-2 bg-red-600 hover:bg-red-500 cursor-pointer text-sm sm:text-md lg:text-lg">Logout</button>
+          {!user && (
+           <Link to={`/login`}>  <button  className="p-2 hover:bg-[#A0CE4E] text-[#A0CE4E] hover:text-white cursor-pointer text-sm sm:text-md lg:text-lg">Login</button></Link>
+          )}
+          {
+            user && (  <button onClick={handleLogout} className="p-2 bg-transparant hover:bg-red-600 cursor-pointer text-sm sm:text-md lg:text-lg">Logout</button>)
+          }
+         
+        
         </ul>
       </div>
     )}
@@ -168,12 +172,17 @@ const Navbar = () => {
   
   {/* Sign Up Button */}
   <div className="mt-8 w-full flex flex-col items-center justify-center ">
-  <button className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] mb-3 text-white rounded-lg shadow-md hover:bg-[#1c6c34] transition duration-300">
-      Login
-    </button>
-    <button className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300">
-      Logout
-    </button>
+ {!user && (
+ <Link to={`/login`}>
+   <button className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] mb-3 text-white rounded-lg shadow-md hover:bg-[#1c6c34] transition duration-300">
+   Login
+ </button></Link>
+ )}
+   {user && (
+     <button onClick={handleLogout} className="w-full max-w-xs px-4 py-3 bg-[#A0CE4E] text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300">
+     Logout
+   </button>
+   )}
   </div>
 </div>
 

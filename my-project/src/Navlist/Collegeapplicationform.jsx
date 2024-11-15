@@ -237,16 +237,16 @@ const CollegeApplicationForm = () => {
   </tbody>
 </table>
 
-        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-end items-center">
+        <div className="flex flex-col sm:flex-row sm:space-x-4 justify-end items-center">
           <button
             type="submit"
-            className="w-full sm:w-36 bg-blue-600 text-white p-2 rounded mt-4 hover:bg-blue-700 transition"
+            className="w-full sm:w-36 bg-[#A0CE4E] text-white p-2 rounded mt-4 hover:bg-emerald-500 transition"
           >
             Submit
           </button>
           <button
             type="button"
-            className="w-full sm:w-36 bg-blue-600 text-white p-2 rounded mt-4 hover:bg-blue-700 transition"
+            className="w-full sm:w-36 bg-[#A0CE4E] text-white p-2 rounded mt-4 hover:bg-red-600 transition"
             onClick={generatePDF}
           >
             Download PDF

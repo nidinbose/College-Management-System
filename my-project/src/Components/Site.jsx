@@ -11,6 +11,7 @@ import Gallery from './Gallary';
 import Footer from './Footer';
 import Feedback from './Feedback';
 import Fesilities from './Fesilities';
+import Sidebar from '../Navlist/Sidebar';
 
 
 const Site = () => {
@@ -18,6 +19,8 @@ const Site = () => {
 
     return (
         <div>
+            
+            <Sidebar/>
             <Start />
            
             <Courses />

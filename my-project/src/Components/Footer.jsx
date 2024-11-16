@@ -1,111 +1,91 @@
-import React from 'react';
-import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    try {
+      // Replace with your backend endpoint
+      const response = await axios.post('https://your-backend-url/api/subscribe', { email });
+      alert('Subscription successful!');
+      setEmail('');
+    } catch (error) {
+      console.error('Error subscribing:', error);
+      alert('Failed to subscribe. Please try again.');
+    }
+  };
+
   return (
-    <section className='w-full bg-white py-24 px-4'>
-      <div className='w-full max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8'>
-        
-        <motion.div
-          className='col-span-1'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img src="/images/pl.png" alt='logo-footer' className='h-[10vh]' />
-          <h3 className="font-bold text-2xl mt-10">Contact us</h3>
-          <h3 className="py-2 text-[#60737a]">call: 647 68658 86658</h3>
-          <h3 className="py-2 text-[#60737a]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam officia .</h3>
-          <h3 className="py-2 text-[#363a3d]">Email: example@gmail.com</h3>
+    <footer className="bg-[#A0CE4E] md:pb-[30vh] xl:pb-[10vh] lg:pb-[50vh]  text-white py-10">
+      <section className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+        {/* Address Section */}
+        <div>
+          <img src="/images/pl.png" alt="Logo" className="mb-4 w-20" />
+          <h2>Address 1: 123 Main St, City</h2>
+          <h2>Phone: (123) 456-7890</h2>
+          <h1>Email 1: email1@example.com</h1>
+          <h1>Email 2: email2@example.com</h1>
+          <h1>Email 3: email3@example.com</h1>
+          <h3>Website: <a href="https://example.com" className="text-blue-400">example.com</a></h3>
+        </div>
 
-          <div className="flex gap-4 py-4">
-            <motion.div
-              className="p-4 rounded-xl bg-[#e9f8f3] cursor-pointer hover:bg-[#d0f0e0]"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FaFacebook size={25} />
-            </motion.div>
-            <motion.div
-              className="p-4 rounded-xl bg-[#e9f8f3] cursor-pointer hover:bg-[#d0f0e0]"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FaTwitter size={25} />
-            </motion.div>
-            <motion.div
-              className="p-4 rounded-xl bg-[#e9f8f3] cursor-pointer hover:bg-[#d0f0e0]"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FaLinkedin size={25} />
-            </motion.div>
-            <motion.div
-              className="p-4 rounded-xl bg-[#e9f8f3] cursor-pointer hover:bg-[#d0f0e0]"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FaYoutube size={25} />
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className='col-span-1'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="font-bold text-2xl mt-10">Explore</h3>
-          <ul className="py-3 text-[#60737a]">
-            <li className="py-2 hover:text-[#208446] transition-colors">Home</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">About us</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Courses</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Contact us</li>
+        {/* Links Section 1 */}
+        <div>
+          <ul className="space-y-2">
+            <li><Link to={`/`} className="hover:text-blue-400">Home</Link></li>
+            <li><Link to={`/courses`} className="hover:text-blue-400">Courses</Link></li>
+            <li><Link to={`/`} className="hover:text-blue-400">campus view</Link></li>
+            <li><Link to={`/`} className="hover:text-blue-400">Faculities</Link></li>
           </ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className='col-span-1'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="font-bold text-2xl mt-10">Categories</h3>
-          <ul className="py-3 text-[#60737a]">
-            <li className="py-2 hover:text-[#208446] transition-colors">Design</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Development</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Marketing</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Finance</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Music</li>
-            <li className="py-2 hover:text-[#208446] transition-colors">Photography</li>
+        {/* Links Section 2 */}
+        <div>
+          <ul className="space-y-2">
+          <li><Link to={`/`} className="hover:text-blue-400">Gallary</Link></li>
+          <li><Link to={`/`} className="hover:text-blue-400">Gallary</Link></li>
+          <li><Link to={`/`} className="hover:text-blue-400">Home</Link></li>
+          <li><Link to={`/`} className="hover:text-blue-400">Home</Link></li>
           </ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className='col-span-1 md:col-span-2'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="font-bold text-2xl mt-10">Subscribe</h3>
-          <h3 className="py-2 text-[#60737a]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam officia .</h3>
-          <form className='input-box-shadow flex justify-between items-center bg-transparent gap-2'>
+        {/* Subscription & Socials Section */}
+        <div>
+          <form onSubmit={handleSubscribe} className="flex flex-col space-y-4">
             <input
-              type="text"
-              className="my-2 w-full px-5 py-3 border border-solid border-neutral-300 bg-transparent bg-clip-padding text-base font-normal text-neutral-700 outline-none placeholder:text-neutral-500"
-              placeholder='Enter your email address here'
+              type="email"
+              placeholder="Enter your email"
+              className="px-4 py-2 rounded-md text-black focus:outline-none"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            <button className='my-2 px-5 py-3 bg-[#208446] text-white hover:bg-[#1a6b3b] transition-colors'>
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md"
+            >
               Subscribe
             </button>
           </form>
-        </motion.div>
-
-      </div>
-    </section>
+          <div className="mt-4 flex space-x-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.png" alt="Facebook" className="w-6 h-6 hover:opacity-80" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.png" alt="Twitter" className="w-6 h-6 hover:opacity-80" />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.png" alt="Instagram" className="w-6 h-6 hover:opacity-80" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </footer>
   );
 };
 
 export default Footer;
+

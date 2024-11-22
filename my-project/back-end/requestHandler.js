@@ -7,6 +7,9 @@ import studentsSchema from './models/students.model.js'
 import staffSchema from './models/staff.model.js'
 import Mark from './models/marks.model.js'
 import courseSchema from './models/course.model.js'
+import contactsModel from "./models/contacts.model.js"
+import contactsSchema from './models/contacts.model.js'
+import applynowSchema from './models/applynow.model.js'
 
 
 
@@ -536,4 +539,38 @@ export async function getCourseId(req,res){
   } catch (error) {
     return res.status(500).send("internal error")
   }
+}
+
+
+// Contact section
+
+
+export async function contactNotifications(req,res){
+  const {Name,Email,Phone,Course,Message}=req.body
+
+   if(!(Name&&Email&&Phone&&Course&&Message))
+    return res.status(400).send("Validation error")
+
+   await contactsSchema.create({Name,Email,Phone,Course,Message}).then(()=>{
+return res.status(201).send(" Submitted deatiles")
+   })
+}
+
+
+export async function applyNowF(req,res){
+
+  const {firstName,lastName,dob,sex,religion,cast,address,pincode,schoolName,yearOfPassout,aadharNo,sslcRegistrationNumber,
+    higherSecondaryRegistrationNumber,percentageHigherSecondary,phone,email}=req.body
+
+    if(!(firstName&&lastName&&dob&&sex&&religion&&cast&&address&&pincode&&schoolName&&yearOfPassout&&aadharNo
+      &&sslcRegistrationNumber&&higherSecondaryRegistrationNumber&&percentageHigherSecondary&&phone&&email
+    ))
+    return res.status(400).send("Validation error")
+
+    await applynowSchema.create({firstName,lastName,dob,sex,religion,cast,address,pincode,schoolName,yearOfPassout,aadharNo
+      ,sslcRegistrationNumber,higherSecondaryRegistrationNumber,percentageHigherSecondary,phone,email
+    }).then(()=>{
+      return res.status(201).send("Applied Successfully")
+    })
+
 }

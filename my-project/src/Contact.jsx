@@ -17,9 +17,9 @@ const add=async(e)=>{
     e.preventDefault();
     try {
        console.log(res.data);
-       const response=await axios.post("htpp://localhost:3003/api/",data)
+       const response=await axios.post("htpp://localhost:3003/api/contactn",data)
         console.log(response.data);
-        // window.alert("Successfully submitted application contact you soon")
+        window.alert("Successfully submitted application contact you soon")
         
     } catch (error) {
         

@@ -39,6 +39,8 @@ router.route('/getmarklist').get(request.getMarklist)
 router.route('/addcourse').post(request.addCourses)
 router.route('/getcourse').get(request.getCourse)
 router.route('/getcourseid/:id').get(request.getCourseId)
+router.route('/contactn').post(request.contactNotifications)
+router.route('/applynowf').post(request.applyNowF)
 
 
 

@@ -21,7 +21,9 @@ const CollegeApplicationForm = () => {
     aadharNo: '',
     sslcRegistrationNumber: '',
     higherSecondaryRegistrationNumber: '',
-    percentageHigherSecondary: ''
+    percentageHigherSecondary: '',
+    phone:'',
+    email:''
   });
 
   const handleChange = (e) => {
@@ -32,9 +34,9 @@ const CollegeApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://your-backend-api-url.com/applications', formData);
+      await axios.post('http://localhost:3003/api//applynowf', formData);
       toast.success('Application submitted successfully!');
-      generatePDF();
+      
     } catch (error) {
       console.error('Error submitting application:', error);
       toast.error('Failed to submit application');
@@ -229,6 +231,32 @@ const CollegeApplicationForm = () => {
           type="number"
           name="percentageHigherSecondary"
           value={formData.percentageHigherSecondary}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+      </td>
+    </tr>
+   
+    <tr>
+      <td className="p-4 border text-violet-600">Email</td>
+      <td className="p-4 border" colSpan="3">
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+      </td>
+    </tr>
+
+    <tr>
+      <td className="p-4 border text-violet-600">Phonenumber</td>
+      <td className="p-4 border" colSpan="3">
+        <input
+          type="number"
+          name="phone"
+          value={formData.phone}
           onChange={handleChange}
           className="w-full p-2 border rounded"
         />

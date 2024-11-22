@@ -77,7 +77,7 @@ const Navbar = () => {
            <ul className="flex gap-10 items-center justify-center">
   <Link to={`/applaynow`}>
   <li className="text-sm sm:text-md lg:text-lg">Apply Now</li></Link>
-  <li className="text-sm sm:text-md lg:text-lg">Affiliations</li>
+  <Link to={`/affiliations`}><li className="text-sm sm:text-md lg:text-lg">Affiliations</li></Link>
   
   <Link to={`/campus`}>
     <li className="text-sm sm:text-md lg:text-lg">Campus Tour</li>

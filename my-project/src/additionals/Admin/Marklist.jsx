@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavLR from '../../Navlist/NavLR';
 
 const Marklist = () => {
   const [markData, setMarkData] = useState([]);
@@ -43,8 +44,10 @@ const Marklist = () => {
 
   return (
     <div className="marklist-container p-4 bg-[#1B2C39] min-h-screen">
+  
       <h2 className="text-2xl font-semibold mb-4 text-[#A0CE4E]">Marklist</h2>
-      <div className="mb-4 w-36">
+      <div className="mt-[20vh] mb-4 w-36">
+      <NavLR/>
         <input
           type="text"
           className="p-2 border rounded w-full text-gray-700 focus:outline-none"

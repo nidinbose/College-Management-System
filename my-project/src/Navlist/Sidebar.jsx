@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="fixed left-2 top-2/3 flex flex-col space-y-4 z-50">
+    <div className="fixed left-2 top-2/3 flex flex-col space-y-4 z-50 pb-[60vh]">
          <div className="flex flex-col items-center space-y-4">
         <a
           href="https://facebook.com"

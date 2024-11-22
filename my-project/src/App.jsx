@@ -46,6 +46,7 @@ import CoursesList from './Navlist/CoursesList';
 import Contact from './Contact';
 import CollegeApplicationForm from './Navlist/Collegeapplicationform';
 import Sidebar from './Navlist/Sidebar';
+import Affiliations from './Affliations';
 
 
 
@@ -103,6 +104,8 @@ const App=()=>{
       <Route path='/CL' Component={CoursesList}/>
       <Route path='/contact' Component={Contact}/>
       <Route path='/applaynow' Component={CollegeApplicationForm}/>
+      <Route path='/affiliations' Component={Affiliations}/>
+
       
       </Routes>
       <Footer/>

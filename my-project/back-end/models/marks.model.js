@@ -11,6 +11,6 @@ const marksSchema = new mongoose.Schema({
   studentid: { type: String },
 });
 
-export default mongoose.models.Mark || mongoose.model('Mark', marksSchema);
+export default mongoose.model.Mark || mongoose.model('Mark', marksSchema);
 
   

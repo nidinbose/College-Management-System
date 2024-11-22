@@ -41,6 +41,7 @@ router.route('/getcourse').get(request.getCourse)
 router.route('/getcourseid/:id').get(request.getCourseId)
 router.route('/contactn').post(request.contactNotifications)
 router.route('/applynowf').post(request.applyNowF)
+router.route('/notify').post(request.Notify)
 
 
 

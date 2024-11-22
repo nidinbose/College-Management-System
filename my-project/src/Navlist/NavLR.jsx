@@ -18,14 +18,14 @@ const NavLR = () => {
     <div className="fixed top-0 left-0 p-4 z-50 flex space-x-4 items-center">
       <button
         onClick={goBack}
-        className="transition duration-200 text-emerald-500 hover:text-gray-500"
+        className="transition duration-200 text-[#A0CE4E] hover:text-gray-500"
         style={{ backgroundColor: 'transparent' }}
       >
         <FaLongArrowAltLeft className='w-7 h-7 '/>
       </button>
       <button
         onClick={goForward}
-        className="transition duration-200 text-gray-800 hover:text-gray-500"
+        className="transition duration-200 text-[#A0CE4E]  hover:text-gray-500"
         style={{ backgroundColor: 'transparent' }}
       >
       <FaLongArrowAltRight  className='w-7 h-7 '/>

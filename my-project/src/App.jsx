@@ -47,6 +47,8 @@ import Contact from './Contact';
 import CollegeApplicationForm from './Navlist/Collegeapplicationform';
 import Sidebar from './Navlist/Sidebar';
 import Affiliations from './Affliations';
+import AddNotifications from './additionals/Admin/AddNotifications';
+import NavLR from './Navlist/NavLR';
 
 
 
@@ -57,6 +59,7 @@ const App=()=>{
     return(
       <BrowserRouter>
     <Navbar/>
+    <NavLR/>
    
   
       <Routes>
@@ -105,6 +108,7 @@ const App=()=>{
       <Route path='/contact' Component={Contact}/>
       <Route path='/applaynow' Component={CollegeApplicationForm}/>
       <Route path='/affiliations' Component={Affiliations}/>
+      <Route path='/addnotify' Component={AddNotifications}/>
 
       
       </Routes>

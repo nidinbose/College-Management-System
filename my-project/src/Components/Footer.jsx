@@ -8,7 +8,6 @@ const Footer = () => {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
-      // Replace with your backend endpoint
       const response = await axios.post('https://your-backend-url/api/subscribe', { email });
       alert('Subscription successful!');
       setEmail('');
@@ -19,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#A0CE4E] md:pb-[30vh] xl:pb-[10vh] lg:pb-[50vh]  text-white py-10">
+    <footer className="bg-gradient-to-r from-[#A0CE4E] to-[#1D1D1D] md:pb-[30vh] xl:pb-[10vh] lg:pb-[50vh]  text-white py-10">
       <section className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
         {/* Address Section */}
         <div>
@@ -34,7 +33,7 @@ const Footer = () => {
 
         {/* Links Section 1 */}
         <div>
-          <ul className="space-y-2">
+          <ul className="space-y-2 p-12">
             <li><Link to={`/`} className="hover:text-blue-400">Home</Link></li>
             <li><Link to={`/courses`} className="hover:text-blue-400">Courses</Link></li>
             <li><Link to={`/`} className="hover:text-blue-400">campus view</Link></li>
@@ -44,7 +43,7 @@ const Footer = () => {
 
         {/* Links Section 2 */}
         <div>
-          <ul className="space-y-2">
+          <ul className="space-y-2 p-12">
           <li><Link to={`/`} className="hover:text-blue-400">Gallary</Link></li>
           <li><Link to={`/`} className="hover:text-blue-400">Gallary</Link></li>
           <li><Link to={`/`} className="hover:text-blue-400">Home</Link></li>
@@ -54,7 +53,7 @@ const Footer = () => {
 
         {/* Subscription & Socials Section */}
         <div>
-          <form onSubmit={handleSubscribe} className="flex flex-col space-y-4">
+          <form onSubmit={handleSubscribe} className="flex flex-col space-y-4 p-12">
             <input
               type="email"
               placeholder="Enter your email"

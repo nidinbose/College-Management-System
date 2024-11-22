@@ -10,6 +10,7 @@ import courseSchema from './models/course.model.js'
 import contactsModel from "./models/contacts.model.js"
 import contactsSchema from './models/contacts.model.js'
 import applynowSchema from './models/applynow.model.js'
+import notifySchema from './models/notify.model.js'
 
 
 
@@ -462,7 +463,21 @@ export async function getMarklist(req,res){
 }
 
 
+export async function Notify(req,res){
 
+try {
+  const {Subject,Date,Matter,Type}=req.body
+
+  if(!(Subject&&Date&&Matter&&Type))
+    return res.status(400).send("validation error")
+
+  await notifySchema.create({Subject,Date,Matter,Type}).then(()=>{
+    return res.status(200).send("Notification published")
+  })
+} catch (error) {
+  return res.status(500).send("Internal server error")
+}
+}
 
 
 // Count

@@ -84,12 +84,12 @@ const Navbar = () => {
   </Link>
 
   <li>
-    <button>
+  <button className="focus:outline-none">
       <Link to="/">
         <img
           src="/images/pl.png"
           alt="Logo"
-          className="h-full cursor-pointer rounded-full w-20 h-20"
+          className="h-20 w-20 rounded-full cursor-pointer opacity-50 hover:opacity-100 transition-opacity duration-300"
         />
       </Link>
     </button>

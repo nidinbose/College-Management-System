@@ -49,6 +49,7 @@ import Sidebar from './Navlist/Sidebar';
 import Affiliations from './Affliations';
 import AddNotifications from './additionals/Admin/AddNotifications';
 import NavLR from './Navlist/NavLR';
+import AppliedApplication from './additionals/Admin/AppliedApplication';
 
 
 
@@ -109,6 +110,7 @@ const App=()=>{
       <Route path='/applaynow' Component={CollegeApplicationForm}/>
       <Route path='/affiliations' Component={Affiliations}/>
       <Route path='/addnotify' Component={AddNotifications}/>
+      <Route path='/appliedapplication' Component={AppliedApplication}/>
 
       
       </Routes>

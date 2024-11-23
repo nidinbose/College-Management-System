@@ -589,3 +589,24 @@ export async function applyNowF(req,res){
     })
 
 }
+
+
+export async function getApplied(req,res){
+  try {
+    const data=await applynowSchema.find({}).then((data)=>{
+      return res.status(201).send(data)
+    })
+  } catch (error) {
+    return res.status(500).send("error in getting results")
+  }
+}
+
+export async function contactsList(req,res){
+  try {
+    const data=await contactsSchema.find({}).then((data)=>{
+      return res.status(201).send(data)
+    })
+  } catch (error) {
+    return res.status(500).send("error in enquiries")
+  }
+}

@@ -168,7 +168,7 @@ const Admin = () => {
           </li>
           <li>
             <Link
-              to="/applicationlist"
+              to="/appliedapplication"
               className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
             >
               <FaListAlt /> Applications

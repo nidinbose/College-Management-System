@@ -31,6 +31,10 @@ router.route('/deletestaff/:id').delete(request.deleteStaff)
 router.route('/updatestaff/:id').patch(request.updateStaff)
 router.route('/staffcount').get(request.staffCount)
 
+router.route('/applycount').get(request.applyCount)
+router.route('/contactcount').get(request.contactCount)
+router.route('/notifycount').get(request.notifyCount)
+
 
 router.route('/addmarks').post(request.addMarks)
 router.route('/getmarkedit/:studentid').get(request.getMarkEdit)

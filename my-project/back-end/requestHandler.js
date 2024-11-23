@@ -494,6 +494,35 @@ export async function studentsCount(req, res) {
   }
 }
 
+export async function contactCount(req, res) {
+  try {
+    const contactCount = await contactsSchema.countDocuments({});
+      res.status(200).json({ count: contactCount });
+  } catch (error) {
+    console.error('Error fetching contact count:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
+export async function applyCount(req, res) {
+  try {
+    const applyCount = await applynowSchema.countDocuments({});
+      res.status(200).json({ count: applyCount });
+  } catch (error) {
+    console.error('Error fetching apply count:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
+export async function notifyCount(req, res) {
+  try {
+    const notifyCount = await notifySchema.countDocuments({});
+      res.status(200).json({ count: notifyCount });
+  } catch (error) {
+    console.error('Error fetching notification count:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
 
 export async function staffCount(req, res) {
   try {

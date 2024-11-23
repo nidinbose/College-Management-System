@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
-  FaHome,
   FaUserGraduate,
   FaChalkboardTeacher,
   FaPlusSquare,
-  FaClipboardList,
-  FaBook,
-  FaBell,
+  FaWpforms,
   FaPhone,
-  FaListAlt,
+  FaBook,
 } from "react-icons/fa";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import { RxDashboard } from "react-icons/rx";
+import { MdOutlineNotificationAdd } from "react-icons/md";
+import { BiSolidBookAdd } from "react-icons/bi";
 
 const Admin = () => {
   const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [user, setUser] = useState({ username: "", image: "", role: "" });
   const [loading, setLoading] = useState(true);
   const [studentCount, setStudentCount] = useState(null);
@@ -37,8 +37,6 @@ const Admin = () => {
         .then((response) => {
           const { username, photo, role, token } = response.data.user;
           localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify({ username, photo, role }));
-
           if (role !== "admin") {
             alert("Unauthorized access. Admins only.");
             navigate("/login");
@@ -47,8 +45,7 @@ const Admin = () => {
             setLoading(false);
           }
         })
-        .catch((error) => {
-          console.error("Error fetching user data:", error);
+        .catch(() => {
           alert("Failed to fetch user data. Please log in again.");
           localStorage.removeItem("token");
           navigate("/login");
@@ -65,17 +62,18 @@ const Admin = () => {
         setStudentCount(studentRes.data.count);
         setStaffCount(staffRes.data.count);
         setUserCount(userRes.data.count);
-      } catch (error) {
-        console.error("Error fetching counts:", error);
+      } catch {
+        console.error("Error fetching counts.");
       }
     };
 
     fetchCounts();
   }, [navigate]);
 
+  const handleToggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     navigate("/login");
   };
 
@@ -88,101 +86,106 @@ const Admin = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Fixed Sidebar */}
-      <aside className="fixed w-64 h-screen bg-[#A0CE4E] text-white flex flex-col p-6">
-        <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
-        <img
-          src={user.image}
-          alt="User profile"
-          className="w-20 h-20 rounded-full mb-4 mx-auto"
-        />
-        <span className="text-md font-semibold mb-8 text-center">
-          {user.username}
-        </span>
+    <div className="flex h-screen">
+        <div>
+      <aside
+        className={`fixed top-0 left-0 h-full bg-[#002d94] overflow-y-auto text-white p-6 transform transition-transform duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 w-64 z-40`}
+      >
+         <div className="flex items-center gap-4 mb-8">
+          <img src="/images/pl.png" alt="Logo" className="w-12 h-12" />
+          <h1 className="text-lg font-bold">Cambridge College</h1>
+        </div>
         <ul className="space-y-4">
+          <li className="text-start font-bold text-gray-300">Main</li>
           <li>
             <Link
               to="/admin"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
             >
-              <FaHome /> Home
+              <RxDashboard className="w-7 h-7" /> Dashboard
             </Link>
           </li>
-          <li>
-            <Link
-              to="/vstudent"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
-            >
-              <FaUserGraduate /> Students List
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/vstaff"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
-            >
-              <FaChalkboardTeacher /> Staff List
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/addstudents"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
-            >
-              <FaPlusSquare /> Add Students
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/addstaff"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
-            >
-              <FaPlusSquare /> Add Staff
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/courses"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
-            >
-              <FaBook /> Courses
-            </Link>
-          </li>
-
           <li>
             <Link
               to="/addcourse"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
             >
-              <FaBook />Add Courses
+              <BiSolidBookAdd className="w-7 h-7" /> Add Courses
             </Link>
           </li>
           <li>
             <Link
               to="/addnotify"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
             >
-              <FaBell /> Notifications
+              <MdOutlineNotificationAdd className="w-7 h-7" /> Notifications
             </Link>
           </li>
+
+          <li className="text-start font-bold text-gray-300">Admissions</li>
           <li>
             <Link
               to="/appliedapplication"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
             >
-              <FaListAlt /> Applications
+              <FaWpforms className="w-7 h-7" /> Applications
             </Link>
           </li>
           <li>
             <Link
               to="/enquiries"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
             >
-              <FaPhone /> Contacts
+              <FaPhone className="w-7 h-7" /> Enquiries
+            </Link>
+          </li>
+
+          <li className="text-start font-bold text-gray-300">Administration</li>
+          <li>
+            <Link
+              to="/addstudents"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+            >
+              <FaPlusSquare className="w-7 h-7" /> Add Students
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/addstaff"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+            >
+              <FaPlusSquare className="w-7 h-7" /> Add Staff
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/vstudent"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+            >
+              <FaUserGraduate className="w-7 h-7" /> Students List
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/vstaff"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+            >
+              <FaChalkboardTeacher className="w-7 h-7" /> Staff List
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/courses"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+            >
+              <FaBook className="w-7 h-7" /> Courses
             </Link>
           </li>
         </ul>
+
+        {/* Logout Button */}
         <button
           onClick={handleLogout}
           className="w-full py-2 mt-6 bg-red-500 rounded hover:bg-red-600"
@@ -190,30 +193,55 @@ const Admin = () => {
           Logout
         </button>
       </aside>
+      </div>
+      
 
-  
-      <div className="ml-64 flex-1 p-6 bg-[#1B2C39]">
-        <h2 className="text-xl text-white font-bold">Welcome, {user.username}</h2>
-       
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-lg font-semibold text-gray-600">
-              Total Students
-            </h3>
-            <p className="text-3xl font-bold text-blue-800">{studentCount}</p>
+      {/* Main Content */}
+      <div
+        className={`flex-1 flex flex-col transition-all duration-300 ${
+          isSidebarOpen ? "ml-64" : "ml-0"
+        } lg:ml-64`}
+      >
+        {/* Header */}
+        <header className="p-4 bg-white shadow-md flex items-center justify-end">
+          <h2 className="text-lg font-semibold ">Welcome, {user.username}</h2>
+          <button
+            className="p-2 bg-blue-600 text-white rounded lg:hidden"
+            onClick={handleToggleSidebar}
+          >
+            {isSidebarOpen ? <HiX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
+          </button>
+        </header>
+
+        {/* Dashboard Overview */}
+        <main className="flex-grow p-6 bg-gray-100">
+         
+           <div className="flex items-center justify-between">
+           <h1 className="text-xl font-bold mb-4">Overview</h1>
+           <div className="space-x-4">
+           <button>ghj</button>
+           <button>ghj</button>
+           </div>
+           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">Total Students</h2>
+              <p className="text-2xl font-bold">{studentCount}</p>
+            </div>
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">Total Staff</h2>
+              <p className="text-2xl font-bold">{staffCount}</p>
+            </div>
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">Total Users</h2>
+              <p className="text-2xl font-bold">{userCount}</p>
+            </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-lg font-semibold text-gray-600">Total Staff</h3>
-            <p className="text-3xl font-bold text-blue-800">{staffCount}</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-lg font-semibold text-gray-600">Total Users</h3>
-            <p className="text-3xl font-bold text-blue-800">{userCount}</p>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   );
 };
 
 export default Admin;
+

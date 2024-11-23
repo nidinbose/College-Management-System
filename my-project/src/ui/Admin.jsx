@@ -176,7 +176,7 @@ const Admin = () => {
           </li>
           <li>
             <Link
-              to="/contacts"
+              to="/enquiries"
               className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded"
             >
               <FaPhone /> Contacts
@@ -191,10 +191,10 @@ const Admin = () => {
         </button>
       </aside>
 
-      {/* Main Content */}
+  
       <div className="ml-64 flex-1 p-6 bg-[#1B2C39]">
         <h2 className="text-xl text-white font-bold">Welcome, {user.username}</h2>
-        {/* Dashboard Statistics */}
+       
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <h3 className="text-lg font-semibold text-gray-600">

@@ -50,6 +50,7 @@ import Affiliations from './Affliations';
 import AddNotifications from './additionals/Admin/AddNotifications';
 import NavLR from './Navlist/NavLR';
 import AppliedApplication from './additionals/Admin/AppliedApplication';
+import Enquiries from './additionals/Admin/Enqieries';
 
 
 
@@ -111,6 +112,7 @@ const App=()=>{
       <Route path='/affiliations' Component={Affiliations}/>
       <Route path='/addnotify' Component={AddNotifications}/>
       <Route path='/appliedapplication' Component={AppliedApplication}/>
+      <Route path='/enquiries' Component={Enquiries}/>
 
       
       </Routes>

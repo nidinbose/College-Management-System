@@ -22,6 +22,7 @@ const Admin = () => {
   const [studentCount, setStudentCount] = useState(null);
   const [staffCount, setStaffCount] = useState(null);
   const [userCount, setUserCount] = useState(null);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -67,7 +68,17 @@ const Admin = () => {
       }
     };
 
+    const fetchNotifications = async () => {
+      try {
+        const response = await axios.get("http://localhost:3003/api/getnotification");
+        setNotifications(response.data);
+      } catch {
+        console.error("Error fetching notifications.");
+      }
+    };
+
     fetchCounts();
+    fetchNotifications();
   }, [navigate]);
 
   const handleToggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -236,6 +247,28 @@ const Admin = () => {
               <h2 className="text-gray-700">Total Users</h2>
               <p className="text-2xl font-bold">{userCount}</p>
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2">
+          <section className="mt-8">
+            <h1 className="text-lg font-bold mb-4">Notifications</h1>
+            <div className="space-y-4">
+              {notifications.map((notification) => (
+                <div
+                  key={notification.id}
+                  className="bg-white p-4 rounded shadow border-l-4 border-blue-500"
+                >
+                  <h2 className="font-bold text-gray-700">{notification.Subject}</h2>
+                  <p className="text-gray-600">{notification.Matter}</p>
+                  <h1>{notification.Type}</h1>
+                  <p className="text-sm text-gray-400">
+                    {new Date(notification.Date).toLocaleDateString()} at{" "}
+                    {new Date(notification.Date).toLocaleTimeString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
           </div>
         </main>
       </div>

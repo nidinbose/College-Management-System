@@ -639,3 +639,14 @@ export async function contactsList(req,res){
     return res.status(500).send("error in enquiries")
   }
 }
+
+export async function getNotifyList(req,res){
+
+  try {
+    const data=await notifySchema.find({}).then((data)=>{
+      return res.status(201).send(data)
+    })
+  } catch (error) {
+    
+  }
+}

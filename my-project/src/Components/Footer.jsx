@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { IoLogoInstagram } from "react-icons/io5";
+import { BsTwitterX } from "react-icons/bs";
+import { FaFacebook } from "react-icons/fa";
+import { SiWhatsapp } from "react-icons/si";
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -23,15 +27,15 @@ const Footer = () => {
         {/* Address Section */}
         <div>
           <img src="/images/pl.png" alt="Logo" className="mb-4 w-20" />
-          <h2 className="text-sm">Address 1: 123 Main St, City</h2>
+          <h2 className="text-sm">Address 1: 123 Main St, City Banglore</h2>
           <h2 className="text-sm">Phone: (123) 456-7890</h2>
-          <h2 className="text-sm">Email 1: email1@example.com</h2>
-          <h2 className="text-sm">Email 2: email2@example.com</h2>
-          <h2 className="text-sm">Email 3: email3@example.com</h2>
-          <h3 className="text-sm">
+          <h2 className="text-sm">Email 1: www.cambridgeadmissions@gmail.com</h2>
+          <h2 className="text-sm">Email 2: www.cambridgeconnect@gmail.com</h2>
+          <a href=""><h2 className="text-sm">Email 3: www.cambridgemanagement@gmail.com</h2></a>
+          <h3 className="text-sm flex gap-3 items-center">
             Website:{" "}
             <a href="https://example.com" className="text-blue-400 hover:underline">
-              example.com
+            <p className='text-red-500'>  www.cambridgeedu.co.in</p>
             </a>
           </h3>
         </div>
@@ -64,7 +68,7 @@ const Footer = () => {
 
         {/* Links Section 2 */}
         <div>
-          <ul className="space-y-2">
+          <ul className="space-y-4 font-semibold">
             <li>
               <Link to="/" className="hover:text-blue-400 text-sm">
                 Gallery
@@ -88,8 +92,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Subscription & Socials Section */}
-        <div>
+           <div>
           <form onSubmit={handleSubscribe} className="flex flex-col space-y-4">
             <input
               type="email"
@@ -101,19 +104,19 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md"
+              className="bg-emerald-400 hover:bg-red-500 text-white py-2 px-4 rounded-md"
             >
               Subscribe
             </button>
           </form>
-          <div className="mt-6 flex space-x-4 justify-center">
+          <div className="mt-6 flex space-x-7 justify-center">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <img src="/icons/facebook.png" alt="Facebook" className="w-8 h-8" />
+         <FaFacebook className='w-8 h-8'/>
             </a>
             <a
               href="https://twitter.com"
@@ -121,7 +124,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <img src="/icons/twitter.png" alt="Twitter" className="w-8 h-8" />
+          <BsTwitterX className='w-8 h-8'/>
             </a>
             <a
               href="https://instagram.com"
@@ -129,7 +132,15 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <img src="/icons/instagram.png" alt="Instagram" className="w-8 h-8" />
+              <IoLogoInstagram className='w-8 h-8'/>
+            </a>
+            <a
+              href="https://whatsapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80"
+            >
+        <SiWhatsapp className='w-8 h-8'/>
             </a>
           </div>
         </div>

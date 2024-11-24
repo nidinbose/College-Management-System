@@ -63,7 +63,7 @@ const CourseOverview = () => {
           Message: '',
         });
       } else {
-        toast.error('Failed to send your message. Please try again.', { autoClose: 3000 });
+        // toast.error('Failed to send your message. Please try again.', { autoClose: 3000 });
       }
     } catch (error) {
       console.error('Error sending contact details:', error);

@@ -13,6 +13,9 @@ import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
 import { MdOutlineNotificationAdd } from "react-icons/md";
 import { BiSolidBookAdd } from "react-icons/bi";
+import { AiFillMessage } from "react-icons/ai";
+import { IoMdNotifications } from "react-icons/io";
+import { FaUsersCog } from "react-icons/fa";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -22,6 +25,9 @@ const Admin = () => {
   const [studentCount, setStudentCount] = useState(null);
   const [staffCount, setStaffCount] = useState(null);
   const [userCount, setUserCount] = useState(null);
+  const [applyCount, setApplyCount] = useState(null);
+  const [notifyCount, setNotifyCount] = useState(null);
+  const [contactCount, setContactCount] = useState(null);
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -55,14 +61,21 @@ const Admin = () => {
 
     const fetchCounts = async () => {
       try {
-        const [studentRes, staffRes, userRes] = await Promise.all([
+        const [studentRes, staffRes, userRes,applyRes,notifyRes,contactRes] = await Promise.all([
           axios.get("http://localhost:3003/api/studentscount"),
           axios.get("http://localhost:3003/api/staffcount"),
           axios.get("http://localhost:3003/api/usercount"),
+          axios.get("http://localhost:3003/api/applycount"),
+          axios.get("http://localhost:3003/api/notifycount"),
+          axios.get("http://localhost:3003/api/contactcount"),
         ]);
         setStudentCount(studentRes.data.count);
         setStaffCount(staffRes.data.count);
         setUserCount(userRes.data.count);
+        setApplyCount(applyRes.data.count);
+        setNotifyCount(notifyRes.data.count);
+        setContactCount(contactRes.data.count)
+        
       } catch {
         console.error("Error fetching counts.");
       }
@@ -97,10 +110,10 @@ const Admin = () => {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full">
         <div>
       <aside
-        className={`fixed top-0 left-0 h-full bg-[#002d94] overflow-y-auto text-white p-6 transform transition-transform duration-300 ${
+        className={`fixed cursor-pointer top-0 left-0 h-full bg-[#A0CE4E] overflow-y-auto z-50 text-white p-6 transform transition-transform duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 w-64 z-40`}
       >
@@ -113,7 +126,7 @@ const Admin = () => {
           <li>
             <Link
               to="/admin"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-500 rounded font-bold"
             >
               <RxDashboard className="w-7 h-7" /> Dashboard
             </Link>
@@ -121,7 +134,7 @@ const Admin = () => {
           <li>
             <Link
               to="/addcourse"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-500 rounded font-bold"
             >
               <BiSolidBookAdd className="w-7 h-7" /> Add Courses
             </Link>
@@ -129,9 +142,18 @@ const Admin = () => {
           <li>
             <Link
               to="/addnotify"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-500 rounded font-bold"
             >
               <MdOutlineNotificationAdd className="w-7 h-7" /> Notifications
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to="/signup"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-500 rounded font-bold"
+            >
+              <FaUsersCog  className="w-7 h-7" /> Add Users
             </Link>
           </li>
 
@@ -139,7 +161,7 @@ const Admin = () => {
           <li>
             <Link
               to="/appliedapplication"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-emerald-500 rounded font-bold"
             >
               <FaWpforms className="w-7 h-7" /> Applications
             </Link>
@@ -147,7 +169,7 @@ const Admin = () => {
           <li>
             <Link
               to="/enquiries"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-emerald-500 rounded font-bold"
             >
               <FaPhone className="w-7 h-7" /> Enquiries
             </Link>
@@ -157,7 +179,7 @@ const Admin = () => {
           <li>
             <Link
               to="/addstudents"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-600 rounded font-bold"
             >
               <FaPlusSquare className="w-7 h-7" /> Add Students
             </Link>
@@ -165,7 +187,7 @@ const Admin = () => {
           <li>
             <Link
               to="/addstaff"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-600 rounded font-bold"
             >
               <FaPlusSquare className="w-7 h-7" /> Add Staff
             </Link>
@@ -173,7 +195,7 @@ const Admin = () => {
           <li>
             <Link
               to="/vstudent"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-600 rounded font-bold"
             >
               <FaUserGraduate className="w-7 h-7" /> Students List
             </Link>
@@ -181,7 +203,7 @@ const Admin = () => {
           <li>
             <Link
               to="/vstaff"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-600 rounded font-bold"
             >
               <FaChalkboardTeacher className="w-7 h-7" /> Staff List
             </Link>
@@ -189,14 +211,12 @@ const Admin = () => {
           <li>
             <Link
               to="/courses"
-              className="flex gap-3 items-center py-2 px-4 hover:bg-blue-700 rounded font-bold"
+              className="flex gap-3 items-center py-2 px-4 hover:bg-red-600 rounded font-bold"
             >
               <FaBook className="w-7 h-7" /> Courses
             </Link>
           </li>
         </ul>
-
-        {/* Logout Button */}
         <button
           onClick={handleLogout}
           className="w-full py-2 mt-6 bg-red-500 rounded hover:bg-red-600"
@@ -205,17 +225,20 @@ const Admin = () => {
         </button>
       </aside>
       </div>
-      
-
-      {/* Main Content */}
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${
           isSidebarOpen ? "ml-64" : "ml-0"
         } lg:ml-64`}
       >
-        {/* Header */}
         <header className="p-4 bg-white shadow-md flex items-center justify-end">
-          <h2 className="text-lg font-semibold ">Welcome, {user.username}</h2>
+         <div className="flex items-center justify-end gap-5">
+         <h2 className="text-lg font-semibold ">Welcome, {user.username}</h2>
+         <img
+    src={user.image}
+    alt={user.username || "User Photo"}
+    className="h-20 w-20 rounded-full border border-gray-300 object-cover"
+  />
+         </div>
           <button
             className="p-2 bg-blue-600 text-white rounded lg:hidden"
             onClick={handleToggleSidebar}
@@ -224,51 +247,96 @@ const Admin = () => {
           </button>
         </header>
 
-        {/* Dashboard Overview */}
-        <main className="flex-grow p-6 bg-gray-100">
+          <main className="flex-grow p-6 bg-gray-100">
          
            <div className="flex items-center justify-between">
            <h1 className="text-xl font-bold mb-4">Overview</h1>
            <div className="space-x-4">
-           <button>ghj</button>
-           <button>ghj</button>
+           <button className="font-bold text-yellow-400 text-3xl"><AiFillMessage /></button>
+           <button className="font-bold text-yellow-400 text-3xl"><IoMdNotifications /></button>
            </div>
            </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-5  gap-10">
             <div className="bg-white p-4 rounded shadow text-center">
               <h2 className="text-gray-700">Total Students</h2>
               <p className="text-2xl font-bold">{studentCount}</p>
             </div>
             <div className="bg-white p-4 rounded shadow text-center">
               <h2 className="text-gray-700">Total Staff</h2>
+              
               <p className="text-2xl font-bold">{staffCount}</p>
             </div>
             <div className="bg-white p-4 rounded shadow text-center">
               <h2 className="text-gray-700">Total Users</h2>
               <p className="text-2xl font-bold">{userCount}</p>
             </div>
+
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">Pending Applications</h2>
+              <p className="text-2xl font-bold">{applyCount}</p>
+            </div>
+
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">All Notifications</h2>
+              <p className="text-2xl font-bold">{notifyCount}</p>
+            </div>
+
+            <div className="bg-white p-4 rounded shadow text-center">
+              <h2 className="text-gray-700">Pending Enqiries</h2>
+              <p className="text-2xl font-bold">{contactCount}</p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2">
-          <section className="mt-8">
-            <h1 className="text-lg font-bold mb-4">Notifications</h1>
-            <div className="space-y-4">
-              {notifications.map((notification) => (
-                <div
-                  key={notification.id}
-                  className="bg-white p-4 rounded shadow border-l-4 border-blue-500"
-                >
-                  <h2 className="font-bold text-gray-700">{notification.Subject}</h2>
-                  <p className="text-gray-600">{notification.Matter}</p>
-                  <h1>{notification.Type}</h1>
-                  <p className="text-sm text-gray-400">
-                    {new Date(notification.Date).toLocaleDateString()} at{" "}
-                    {new Date(notification.Date).toLocaleTimeString()}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-5">
+          <section className="border shadow-xl w-full h-full">
+  <h1 className="text-lg font-bold mb-4">Notifications</h1>
+  <div className="space-y-4">
+    {notifications.map((notification) => {
+     
+      const borderColor =
+        notification.Type === 'Urgent'
+          ? 'border-red-500'
+          : notification.Type === 'Results'
+          ? 'border-yellow-400'
+          : notification.Type === 'General'
+          ? 'border-green-500'
+            : notification.Type === 'Reminder'
+          ? 'border-violet-400'
+          : 'border-blue-500'; 
+
+      const bgColor =
+        notification.Type === 'Success'
+          ? 'text-green-600'
+          : notification.Type === 'Error'
+          ? 'text-red-600'
+          : notification.Type === 'Warning'
+          ? 'text-yellow-600'
+          : 'text-blue-600'; 
+
+      return (
+        <div
+          key={notification.id}
+          className={`bg-white p-4 rounded shadow border-l-4 ${borderColor}`}
+        >
+          <h2 className={`font-bold`}>{notification.Subject}</h2>
+          <p className="text-gray-600">{notification.Matter}</p>
+          <h1 className={`font-semibold bg-${bgColor}`}>{notification.Type}</h1>
+          <p className="text-sm text-gray-400">
+            {new Date(notification.Date).toLocaleDateString()} at{' '}
+            {new Date(notification.Date).toLocaleTimeString()}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<section className="p-5 h-full w-full border shadow-xl">
+  <div>
+    <h1>Upcomming events</h1>
+  </div>
+</section>
+
           </div>
         </main>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function AddMarksForm() {
-  // State to hold form data
+ 
   const [formData, setFormData] = useState({
     semester: '',
     studentid: '',
@@ -12,10 +12,8 @@ function AddMarksForm() {
     },
   });
 
-  // State to hold response messages
-  const [responseMessage, setResponseMessage] = useState('');
+   const [responseMessage, setResponseMessage] = useState('');
 
-  // Define subjects based on semester
   const subjectsBySemester = {
     1: ['Math', 'English 101', 'Physics 101'],
     2: ['Math', 'English 102', 'Chemistry 101'],
@@ -27,7 +25,6 @@ function AddMarksForm() {
     8: ['Discrete Math', 'Philosophy', 'Chemistry 201'],
   };
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -47,7 +44,6 @@ function AddMarksForm() {
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

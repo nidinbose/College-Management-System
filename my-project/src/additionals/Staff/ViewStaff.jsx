@@ -16,7 +16,7 @@ const ViewStaff = () => {
       setData(res.data);
     } catch (error) {
       console.error("Error fetching staff data:", error);
-      setData(null); // Ensure data is null on error to show fallback UI
+      setData(null);
     } finally {
       setLoading(false);
     }
@@ -57,15 +57,11 @@ const ViewStaff = () => {
 
   return (
     <>
-          <AdminNavbar/>
+        
     <div className="p-6 sm:p-8 md:p-10 lg:p-12 bg-[#1B2C39] min-h-screen">
 
               <h1 className="flex items-center justify-start text-5xl font-semibold text-[#A0CE4E] mb-12">Staff Deatiles</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-
-
-        
-        {/* Image Section */}
         <div className="flex flex-col items-center space-y-7">
           <div className="bg-transparent h-80 w-full flex justify-center items-center p-4 sm:p-6 md:p-8 lg:p-10">
             <img
@@ -78,10 +74,8 @@ const ViewStaff = () => {
             {data.name}
           </h1>
         </div>
-
-        {/* Staff Information Section */}
         <div className="space-y-4 bg-[#A0CE4E] p-6 rounded shadow-lg ">
-          <h2 className="text-2xl font-semibold text-gray-700 text-center lg:text-left">Staff Information</h2>
+          <h2 className="text-2xl font-semibold text-gray-100 text-center lg:text-left">Staff Information</h2>
           <div className="bg-violet-50 p-3 rounded-md border">
             <span className="text-gray-600">Name:</span>
             <span className="font-medium text-gray-900 ml-2">{data.name}</span>
@@ -114,8 +108,6 @@ const ViewStaff = () => {
             <span className="text-gray-600">Date of Birth:</span>
             <span className="font-medium text-gray-900 ml-2">{data.dateOfBirth}</span>
           </div>
-
-          {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">
             <a
                   href="#_"
@@ -140,7 +132,7 @@ const ViewStaff = () => {
       </div>
    
     </div>
-    <AdminFooter/>
+
     </>
   );
 };

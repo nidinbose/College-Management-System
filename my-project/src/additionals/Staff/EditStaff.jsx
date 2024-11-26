@@ -50,11 +50,10 @@ const EditStaff = () => {
 
     return (
         <div className="bg-[#1B2C39]">
-            <AdminNavbar/>
-            <h1 className="text-center text-4xl font-semibold text-[#A0CE4E] font-semibold pb-10 ">Edit Staff Data</h1>
+                       <h1 className="text-center text-4xl font-semibold text-[#A0CE4E] font-semibold pb-10 ">Edit Staff Data</h1>
             <section className="text-gray-700 body-font bg-[#1B2C39] h-full min-h-screen">
                 <div className="container mx-auto px-5 py-12">
-                    <div className="grid lg:grid-cols-2 gap-8">
+                    <div className="grid lg:grid-cols-2 gap-5">
                     <div className="w-24 sm:w-32 md:w-48 lg:w-64 xl:w-80 2xl:w-96">
                             <img
                                 alt="Staff"
@@ -68,8 +67,6 @@ const EditStaff = () => {
                                 className="mt-4 w-full text-gray-700 border border-[#A0CE4E] rounded p-2"
                             />
                         </div>
-
-                        {/* Form Fields */}
                         <div className="w-full">
                             <div className="space-y-6">
                                 <div>
@@ -205,8 +202,7 @@ const EditStaff = () => {
                     </div>
                 </div>
             </section>
-            <AdminFooter/>
-        </div>
+                   </div>
     );
 };
 

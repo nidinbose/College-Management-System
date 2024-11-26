@@ -195,8 +195,7 @@ const Students = () => {
 </div>
 <div className="w-full mx-auto border-[#A0CE4E] rounded-xl shadow-md space-y-4 bg-transparent p-10">
   <h2 className="text-2xl font-semibold text-[#A0CE4E] text-center mb-5">Student Marks</h2>
-  
-  {/* Semester Selection */}
+
   <label htmlFor="semester" className="text-[#A0CE4E]">Select Semester:</label>
   <select
     id="semester"
@@ -213,9 +212,7 @@ const Students = () => {
       );
     })}
   </select>
-
-  {/* Marks Table */}
-  {filteredMarks.length > 0 ? (
+    {filteredMarks.length > 0 ? (
     <div className="mt-6 overflow-x-auto w-[50vw] mx-auto">
       {/* <h3 className="text-lg font-semibold text-[#A0CE4E] mb-4">Subjects</h3> */}
       <table className="min-w-full bg-transparent border border-[#A0CE4E] rounded-md">

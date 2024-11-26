@@ -191,8 +191,7 @@ import AdminFooter from "./AdminFooter";
             </div>
           </div>
         </section>
-        {/* <AdminFooter/> */}
-      </div>
+            </div>
     );
   };
 

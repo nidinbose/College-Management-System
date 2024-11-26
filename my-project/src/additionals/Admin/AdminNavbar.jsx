@@ -41,12 +41,12 @@ export const AdminNavbar = () => {
         <nav className="bg-[#A0CE4E] text-white shadow-lg">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
-                    {/* Logo */}
+                
                     <Link to="/">
                     <img src="/images/pl.png" alt="Logo" className='h-[60px] cursor-pointer' />
                 </Link>
 
-                    {/* Desktop Menu */}
+                
                     <div className="hidden md:flex items-center space-x-4">
                         <a href="/" className="hover:text-gray-300">Home</a>
                         <a href="/profile" className="hover:text-gray-300">Profile</a>
@@ -69,8 +69,7 @@ export const AdminNavbar = () => {
                         )}
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <div className="flex md:hidden items-center">
+                                      <div className="flex md:hidden items-center">
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="text-gray-300 hover:text-white focus:outline-none"
@@ -93,8 +92,7 @@ export const AdminNavbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            {menuOpen && (
+                     {menuOpen && (
                 <div className="md:hidden bg-gray-700">
                     <div className="space-y-1 px-4 pt-2 pb-3 sm:px-3">
                         <a href="/" className="block text-white hover:bg-gray-600 rounded py-2 px-3">Home</a>

@@ -54,131 +54,145 @@ const StudentsEdit = () => {
     }, []);
 
     return (
-        <>
-            <h1 className="text-center text-4xl font-semibold my-6">Edit Student Data</h1>
-            <section className="text-gray-700 body-font overflow-hidden bg-white h-full min-h-screen ">
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        {/* Image Preview and Upload */}
-                        <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <div className="bg-[#1B2C39] min-h-full">
+               <section className="text-gray-700 body-font bg-[#1B2C39] min-h-full">
+            <h1 className="text-start p-10 text-2xl font-bold text-[#A0CE4E]">Edit deatiles</h1>
+            <div className="container px-5 py-12 mx-auto">
+                <div className="lg:w-4/5 mx-auto bg-[#A0CE4E] rounded-lg shadow-lg overflow-hidden flex flex-wrap">
+                    <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
+                        <div className="p-6">
                             <img
                                 alt="Student"
-                                className="w-full h-80 object-cover object-center rounded border border-gray-200"
+                                className="w-full h-full object-cover rounded border border-gray-200"
                                 src={previewSource || data.photo || "https://via.placeholder.com/300"}
                             />
                             <input
                                 type="file"
                                 accept="image/*"
                                 onChange={handleFileChange}
-                                className="mt-4 w-full text-gray-700 border border-gray-300 rounded p-2"
+                                className="mt-4 w-full text-gray-600 border border-gray-300 rounded p-2 focus:ring-2 focus:ring-red-500"
                             />
                         </div>
-                        {/* Form Fields */}
-                        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">Student Name</h2>
+                    </div>
+    
+                    <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 p-6">
+                        <h2 className="text-2xl font-semibold text-white mb-4">
+                            Student Details
+                        </h2>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white ">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 value={data.name || ""}
                                 onChange={handleChange}
-                                className="leading-relaxed w-full mb-4 p-2 border rounded"
-                                placeholder="Student Name"
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Student Name"
                             />
-
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-                                Student ID:
-                                <input
-                                    type="text"
-                                    name="studentid"
-                                    value={data.studentid || ""}
-                                    onChange={handleChange}
-                                    className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-                                    placeholder="Student ID"
-                                />
-                            </p>
-
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-                                Class:
-                                <input
-                                    type="text"
-                                    name="class"
-                                    value={data.class || ""}
-                                    onChange={handleChange}
-                                    className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-                                    placeholder="Class"
-                                />
-                            </p>
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-    Department:
-    <select
-        name="department"
-        value={data.department || ""}
-        onChange={handleChange}
-        className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-    >
-        <option value="" disabled>
-            Select Department
-        </option>
-        <option value="Computer Science">Computer Science</option>
-        <option value="Electrical Engineering">Electrical Engineering</option>
-        <option value="Civil Engineering">Civil Engineering</option>
-        <option value="Mechanical Engineering">Mechanical Engineering</option>
-    </select>
-</p>
-
-
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-                                Semester:
-                                <input
-                                    type="text"
-                                    name="semester"
-                                    value={data.semester || ""}
-                                    onChange={handleChange}
-                                    className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-                                    placeholder="Semester"
-                                />
-                            </p>
-
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-                                Blood Group:
-                                <input
-                                    type="text"
-                                    name="bloodType"
-                                    value={data.bloodType || ""}
-                                    onChange={handleChange}
-                                    className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-                                    placeholder="Blood Group"
-                                />
-                            </p>
-
-                            <p className="border border-2 rounded-lg font-semibold mb-4">
-                                Date of Birth:
-                                <input
-                                    type="date"
-                                    name="dateOfBirth"
-                                    value={data.dateOfBirth || ""}
-                                    onChange={handleChange}
-                                    className="leading-relaxed pb-3 text-center mt-2 w-full border-transparent"
-                                />
-                            </p>
-
-                            <div className="flex mt-6">
-                                <button
-                                    onClick={handleSubmit}
-                                    className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
-                                    Save Changes
-                                </button>
-                                <button
-                                    onClick={() => navigate('/vstudent')}
-                                    className="ml-4 flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                                    Cancel
-                                </button>
-                            </div>
+                        </div>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Student ID</label>
+                            <input
+                                type="text"
+                                name="studentid"
+                                value={data.studentid || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Student ID"
+                            />
+                        </div>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Class</label>
+                            <input
+                                type="text"
+                                name="Class"
+                                value={data.Class || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Class"
+                            />
+                        </div>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Department</label>
+                            <select
+                                name="department"
+                                value={data.department || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            >
+                                <option value="" disabled>
+                                    Select Department
+                                </option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="BigData Engineering">BigData Engineering</option>
+                                <option value="AI Engineering">AI Engineering</option>
+                                <option value="Automation Engineering">Automation Engineering</option>
+                                
+                            </select>
+                        </div>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Semester</label>
+                            <input
+                                type="text"
+                                name="semester"
+                                value={data.semester || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Semester"
+                            />
+                        </div>
+    
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Blood Group</label>
+                            <input
+                                type="text"
+                                name="bloodType"
+                                value={data.bloodType || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Blood Group"
+                            />
+                        </div>
+    
+                        <div className="mb-6">
+                            <label className="text-sm font-semibold text-white">Date of Birth</label>
+                            <input
+                                type="date"
+                                name="dateOfBirth"
+                                value={data.dateOfBirth || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                            />
+                        </div>
+    
+                        <div className="flex items-center">
+                            <button
+                                onClick={handleSubmit}
+                                className="flex-grow text-white bg-green-500 border-1 rounded-lg py-2 px-6 focus:outline-none hover:bg-green-600 rounded"
+                            >
+                                Save Changes
+                            </button>
+                            <button
+                                onClick={() => navigate('/vstudent')}
+                                className="flex-grow ml-4 text-white bg-red-500 border-0 rounded-lg py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                            >
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
+    </div>
+    
     );
 };
 

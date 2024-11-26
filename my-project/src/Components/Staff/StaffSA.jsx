@@ -11,15 +11,13 @@ const StaffSA = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-10 w-[80vw]">
-      {/* Dashboard Container */}
-      <motion.div
+           <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl bg-white p-8 rounded-lg shadow-lg"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        {/* Add Student Button */}
-        <motion.button
+              <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="w-full text-center bg-[#1B2C39] text-white font-bold py-4 rounded-lg shadow-lg hover:bg-[#A0CE4E] transition duration-300"
@@ -27,9 +25,7 @@ const StaffSA = () => {
         >
           Add Student
         </motion.button>
-
-        {/* Create Account Button */}
-        <motion.button
+          <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="w-full text-center bg-[#1B2C39] text-white font-bold py-4 rounded-lg shadow-lg hover:bg-[#A0CE4E] transition duration-300"
@@ -37,11 +33,7 @@ const StaffSA = () => {
         >
           Create Account
         </motion.button>
-
-      
-
-        {/* View Students List Button */}
-        <motion.button
+              <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="w-full text-center bg-[#1B2C39] text-white font-bold py-4 rounded-lg shadow-lg hover:bg-[#A0CE4E] transition duration-300"
@@ -49,8 +41,6 @@ const StaffSA = () => {
         >
           Students List
         </motion.button>
-
-        {/* Add Marks Button */}
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

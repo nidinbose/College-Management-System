@@ -6,8 +6,7 @@ const AdminFooter = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0">
           
-          {/* Links Section */}
-          <div className="text-center lg:text-left">
+                <div className="text-center lg:text-left">
             <h5 className="text-lg font-semibold mb-4">Quick Links</h5>
             <ul className="space-y-2">
               <li><a href="/dashboard" className="hover:text-gray-300">Dashboard</a></li>
@@ -16,8 +15,6 @@ const AdminFooter = () => {
               <li><a href="/support" className="hover:text-gray-300">Support</a></li>
             </ul>
           </div>
-
-          {/* Contact Information */}
           <div className="text-center lg:text-left">
             <h5 className="text-lg font-semibold mb-4">Contact Us</h5>
             <p>Email: support@adminpanel.com</p>
@@ -25,7 +22,6 @@ const AdminFooter = () => {
             <p>Address: 123 Admin St, Suite 456, City, Country</p>
           </div>
 
-          {/* Social Media Section */}
           <div className="text-center lg:text-left">
             <h5 className="text-lg font-semibold mb-4">Follow Us</h5>
             <div className="flex justify-center lg:justify-start space-x-4">
@@ -45,7 +41,6 @@ const AdminFooter = () => {
           </div>
         </div>
 
-        {/* Copyright Section */}
         <div className="mt-8 text-center border-t border-gray-700 pt-4">
           <p>&copy; {new Date().getFullYear()} Admin Panel. All rights reserved.</p>
         </div>

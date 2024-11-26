@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-[#A0CE4E] to-[#1D1D1D] text-white py-10 pb-[20vh] md:pb-[40vh] lg:pb-[50vh] xl:pb-[10vh]">
       <section className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-        {/* Address Section */}
+       
         <div>
           <img src="/images/pl.png" alt="Logo" className="mb-4 w-20" />
           <h2 className="text-sm">Address 1: 123 Main St, City Banglore</h2>
@@ -40,7 +40,7 @@ const Footer = () => {
           </h3>
         </div>
 
-        {/* Links Section 1 */}
+        
         <div>
           <ul className="space-y-2">
             <li>
@@ -65,8 +65,6 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-
-        {/* Links Section 2 */}
         <div>
           <ul className="space-y-4 font-semibold">
             <li>

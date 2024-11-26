@@ -226,32 +226,33 @@ export async function Home(req, res) {
 
 
 export async function addStudents(req,res){
-  try{
-      console.log(req.body);
-      const {...FormData} = req.body;
+  try {
+    const {name,studentid,Class,department,semester,bloodType,dateOfBirth,photo}=req.body
 
-      await studentsSchema
-      .create({...FormData})
-          .then(()=>{
-              res.status(200).send({msg:"sucessfully created"})
-          })
-          .catch((error)=>{
-              res.status(400).send({error:error})
-          });
-  }catch(error){
-      res.status(500).send(error)
+    if(!(name&studentid&Class,department,semester,bloodType,dateOfBirth,photo))
+      return res.status(400).send("Required Fields")
+
+    await studentsSchema.create({name,studentid,Class,department,semester,bloodType,dateOfBirth,photo}).then(()=>{
+      return res.status(201).send("Student Added Successfully")
+    })
+  } catch (error) {
+    return res.status(500).send("Error adding Student")
   }
 }
 
 
-export async function getStudents(req,res){
-  try{
+export async function getStudents(req, res) {
+  try {
+    const data = await studentsSchema.find({});
 
-      const data=await studentsSchema.find();
-      res.status(200).send(data)
-      console.log(data);
-  }catch (error){
-      res.status(500).send(error)
+    if (data.length === 0) {
+      return res.status(404).send({ message: "No students found" });
+    }
+
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    return res.status(500).send({ message: "An error occurred", error });
   }
 }
 
@@ -272,17 +273,27 @@ export async function getStudentsOne(req,res){
   }
 }
 
-export async function getStudentEdit(req,res) {
+export async function getStudentEdit(req, res) {
   try {
-      const {id}=req.params;
-      console.log(id);
-      const data = await studentsSchema.findOne({_id:id})
-      console.log(data);
-      res.status(200).send(data)
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).send({ message: "Student ID is required" });
+    }
+
+    const data = await studentsSchema.findOne({ _id: id });
+
+    if (!data) {
+      return res.status(404).send({ message: "Student not found" });
+    }
+
+    res.status(200).send(data);
   } catch (error) {
-      res.status(400).send(error)
+    console.error("Error fetching student data:", error);
+    res.status(500).send({ message: "An error occurred", error });
   }
 }
+
 
 export async function deleteStudent(req, res) {
   try {
@@ -315,20 +326,16 @@ export async function updateStudent(req,res) {
 
 // staff
 export async function addStaff(req,res){
-  try{
-      console.log(req.body);
-      const {...FormData} = req.body;
+  try {
+    const {name,staffid,experience,qualification,department,semester,bloodType,dateOfBirth,photo}=req.body
 
-      await staffSchema
-      .create({...FormData})
-          .then(()=>{
-              res.status(200).send({msg:"sucessfully created"})
-          })
-          .catch((error)=>{
-              res.status(400).send({error:error})
-          });
-  }catch(error){
-      res.status(500).send(error)
+    if(!(name,staffid,experience,department,qualification,semester,bloodType,dateOfBirth,photo))
+      return res.status(400).send("Fill all fields")
+    await staffSchema.create({name,staffid,experience,qualification,department,semester,bloodType,dateOfBirth,photo}).then(()=>{
+      return res.status(201).send("Staff Created Successfully")
+    })
+  } catch (error) {
+    return res.status(500).send("error in adding staff")
   }
 }
 
@@ -338,10 +345,13 @@ export async function getStaff(req,res){
   try{
 
       const data=await staffSchema.find();
+      if(data.length === 0){
+        return res.status(404).send({ message: "No students found" });
+      }
       res.status(200).send(data)
       console.log(data);
   }catch (error){
-      res.status(500).send(error)
+      res.status(500).send("Error in fetching staff data ")
   }
 }
 
@@ -353,8 +363,11 @@ export async function getStaffEdit(req,res) {
       const data = await staffSchema.findOne({_id:id})
       console.log(data);
       res.status(200).send(data)
+      if(!data){
+        return res.status(400).send("Do data available")
+      }
   } catch (error) {
-      res.status(400).send(error)
+      res.status(400).send("Error fetching staff data")
   }
 }
 

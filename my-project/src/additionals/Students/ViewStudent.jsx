@@ -92,7 +92,7 @@ const ViewStudent = () => {
               </div>
             </div>
             <div className="rounded shadow-lg p-6 space-y-4 bg-[#A0CE4E]">
-              <h2 className="text-lg font-semibold text-gray-500">Student Information</h2>
+              <h2 className="text-lg font-semibold text-gray-100">Student Information</h2>
               <div className="bg-violet-50 p-3 rounded-md border">
                 <span className="text-gray-600">Name:</span>
                 <span className="font-medium text-gray-900 ml-2">{data.name}</span>
@@ -103,7 +103,7 @@ const ViewStudent = () => {
               </div>
               <div className="bg-violet-50 p-3 rounded-md border">
                 <span className="text-gray-600">Class:</span>
-                <span className="font-medium text-gray-900 ml-2">{data.class}</span>
+                <span className="font-medium text-gray-900 ml-2">{data.Class}</span>
               </div>
               <div className="bg-blue-50 p-3 rounded-md border">
                 <span className="text-gray-600">Department:</span>
@@ -164,7 +164,7 @@ const ViewStudent = () => {
 
     
       {userRole !== 'student' && (
-        <div className="flex justify-center items-end gap-6 mt-6 lg:col-span-2">
+        <div className="flex justify-end px-6 items-end gap-6 mt-6 lg:col-span-2">
           <a
             href="#_"
             className="rounded-md px-4 py-2 sm:px-5 sm:py-3 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#A0CE4E] text-indigo-600"

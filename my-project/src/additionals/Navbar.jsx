@@ -157,8 +157,7 @@ const Navbar = () => {
 
           
           <div className="flex flex-col items-center mt-8 space-y-4 w-full px-4 ">
-  {/* Navigation Links */}
-  {nav.map((item, index) => (
+   {nav.map((item, index) => (
     <Link
       key={index}
       to={item.path}

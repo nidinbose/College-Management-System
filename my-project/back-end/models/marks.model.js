@@ -4,8 +4,8 @@ const marksSchema = new mongoose.Schema({
   semester: { type: Number },
   subjects: [
     {
-      name: { type: String },  // Subject name
-      mark: { type: Number },  // Mark for the subject
+      name: { type: String },  
+      mark: { type: Number },  
     },
   ],
   studentid: { type: String },

@@ -8,7 +8,7 @@ const AddStudents = () => {
   const [formData, setFormData] = useState({
     name: "",
     studentid: "",
-    class: "",
+    Class: "",
     department: "Computer Science",
     semester: "1st Semester",
     bloodType: "",
@@ -57,7 +57,7 @@ const AddStudents = () => {
     let formErrors = {};
     if (!formData.name.trim()) formErrors.name = "Name is required";
     if (!formData.studentid.trim()) formErrors.studentid = "Student ID is required";
-    if (!formData.class.trim()) formErrors.class = "Class is required";
+    if (!formData.Class.trim()) formErrors.class = "Class is required";
     if (!formData.department.trim()) formErrors.department = "Department is required";
     if (!formData.semester.trim()) formErrors.semester = "Semester is required";
     if (!formData.bloodType.trim()) formErrors.bloodType = "Blood Type is required";
@@ -89,8 +89,7 @@ const AddStudents = () => {
       <section className="text-gray-700 body-font overflow-hidden bg-[#1B2C39] h-full min-h-screen">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            {/* Image Preview and Upload */}
-            <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
               <img
                 alt="Student"
                 className="w-full h-82 object-cover object-center rounded border border-[#A0CE4E]"
@@ -104,10 +103,9 @@ const AddStudents = () => {
               />
               {errors.photo && <p className="text-red-500">{errors.photo}</p>}
             </div>
-            {/* Form Fields */}
+           
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 space-y-4">
-  {/* Student Name */}
-  <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Student Name</h2>
+   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Student Name</h2>
   <input
     type="text"
     name="name"
@@ -118,7 +116,6 @@ const AddStudents = () => {
   />
   {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
 
-  {/* Student ID */}
   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Student ID</h2>
   <input
     type="text"
@@ -130,19 +127,17 @@ const AddStudents = () => {
   />
   {errors.studentid && <p className="text-red-500 text-xs">{errors.studentid}</p>}
 
-  {/* Class */}
   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Class</h2>
   <input
     type="text"
-    name="class"
-    value={formData.class}
+    name="Class"
+    value={formData.Class}
     onChange={handleChange}
     className="w-full p-3 border border-[#A0CE4E] rounded-md text-gray-800"
     placeholder="Class"
   />
-  {errors.class && <p className="text-red-500 text-xs">{errors.class}</p>}
+  {errors.Class && <p className="text-red-500 text-xs">{errors.Class}</p>}
 
-  {/* Department */}
   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Department</h2>
   <select
     name="department"
@@ -158,7 +153,6 @@ const AddStudents = () => {
   </select>
   {errors.department && <p className="text-red-500 text-xs">{errors.department}</p>}
 
-  {/* Semester */}
   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Semester</h2>
   <select
     name="semester"
@@ -169,12 +163,10 @@ const AddStudents = () => {
     <option value="" disabled>Select Semester</option>
     <option value="1st Semester">1st Semester</option>
     <option value="2nd Semester">2nd Semester</option>
-    {/* Add more semesters as needed */}
   </select>
   {errors.semester && <p className="text-red-500 text-xs">{errors.semester}</p>}
 
-  {/* Blood Group */}
-  <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Blood Group</h2>
+   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Blood Group</h2>
   <input
     type="text"
     name="bloodType"
@@ -185,7 +177,6 @@ const AddStudents = () => {
   />
   {errors.bloodType && <p className="text-red-500 text-xs">{errors.bloodType}</p>}
 
-  {/* Date of Birth */}
   <h2 className="text-sm font-semibold text-[#A0CE4E] tracking-widest">Date of Birth</h2>
   <input
     type="date"
@@ -196,7 +187,6 @@ const AddStudents = () => {
   />
   {errors.dateOfBirth && <p className="text-red-500 text-xs">{errors.dateOfBirth}</p>}
 
-  {/* Buttons */}
   <div className="flex justify-between gap-4 mt-8">
     <button
       onClick={handleSubmit}

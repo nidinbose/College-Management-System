@@ -16,8 +16,7 @@ const Admissions = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic, e.g., sending form data to the backend
-    console.log(formData);
+       console.log(formData);
   };
 
   return (
@@ -101,8 +100,7 @@ const Admissions = () => {
           </ul>
         </div>
 
-        {/* Contact Form */}
-        <div>
+          <div>
           <h2 className="text-3xl font-semibold text-white">Contact Us</h2>
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             <div>

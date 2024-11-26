@@ -10,7 +10,7 @@ import Admin from './ui/Admin';
 import AddStudents from './additionals/Admin/AddStudent';
 import AddAdmin from './additionals/Admin/AddAdmin';
 import AddStaff from './additionals/Admin/AddStaff';
-import EditStudents from './additionals/Admin/EditStudent';
+// import EditStudents from './additionals/Admin/EditStudent';
 import ViewStudent from './additionals/Students/ViewStudent';
 import StudentView from './Components/StudentView';
 import StaffView from './Components/StaffView';
@@ -73,7 +73,7 @@ const App=()=>{
       <Route path='/addadmin' Component={AddAdmin}/>
       <Route path='/vstaff' Component={StaffView}/>
       <Route path='/editstaff/:id' Component={EditStaff}/>
-      <Route path='/editstudents/:id' Component={EditStudents}/>
+      {/* <Route path='/editstudents/:id' Component={EditStudents}/> */}
       <Route path='/marklist' Component={Marklist}/>
       <Route path='/addcourse' Component={AddCourse}/>
 

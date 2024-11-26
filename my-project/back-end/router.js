@@ -51,6 +51,10 @@ router.route('/getcontactslist').get(request.contactsList)
 router.route('/getnotification').get(request.getNotifyList)
 
 router.route('/deletenotify/:id').delete(request.deleteNotify)
+router.route('/deleteapply/:id').delete(request.deleteapply)
+router.route('/deletecontact/:id').delete(request.deleteEnquries)
+
+router.route('/userslists').get(request.displayUser)
 
 router.route('/approveemail').post(request.approveEmail)
 

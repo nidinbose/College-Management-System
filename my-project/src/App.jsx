@@ -51,6 +51,7 @@ import AddNotifications from './additionals/Admin/AddNotifications';
 import NavLR from './Navlist/NavLR';
 import AppliedApplication from './additionals/Admin/AppliedApplication';
 import Enquiries from './additionals/Admin/Enqieries';
+// import Userslist from './additionals/Admin/Userslist';
 
 
 
@@ -85,6 +86,7 @@ const App=()=>{
 
 
       <Route path='/students' Component={Students}/>
+      {/* <Route path='/userslist' Component={Userslist}/> */}
       <Route path='/view/:id' Component={ViewStudent}/>
       <Route path='/studentviewsd' Component={StudentViewSD}/>
 

@@ -640,6 +640,16 @@ export async function contactsList(req,res){
   }
 }
 
+export async function deleteEnquries(req,res){
+  try {
+    const {id}=req.params
+    await contactsSchema.deleteOne({_id:id})
+    return res.status(201).send("deleted succesfully")
+  } catch (error) {
+    return res.status(500).send("Error on delete")
+  }
+}
+
 export async function getNotifyList(req,res){
 
   try {
@@ -662,11 +672,20 @@ export async function deleteNotify(req,res){
   }
 }
 
+const transporters = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'nidinbose999@gmail.com',
+    pass: 'nidinbose9996032', 
+  },
+});
+
+
 export async function approveEmail(req,res){
   const { email, name } = req.body;
 
   try {
-    await transporter.sendMail({
+    await transporters.sendMail({
       from: 'nidinbose999@gmail.com',
       to: email,
       subject: 'Application Approved',
@@ -684,8 +703,8 @@ export async function rejectEmail(req,res){
   const { email, name } = req.body;
 
   try {
-    await transporter.sendMail({
-      from: 'your-email@gmail.com',
+    await transporters.sendMail({
+      from: 'nidinbose999@gmail.com',
       to: email,
       subject: 'Application Rejected',
       text: `Dear ${name},\n\nWe regret to inform you that your application has been rejected.\n\nBest regards,\nTeam`,
@@ -696,4 +715,28 @@ export async function rejectEmail(req,res){
     console.error(err);
     res.status(500).json({ error: 'Failed to send rejection email' });
   }
+}
+
+export async function deleteapply(req,res){
+  try {
+    const {id}=req.params
+    await applynowSchema.deleteOne({_id:id}).then(()=>{
+      return res.status(201).send("Deleted succesfully")
+    })
+  } catch (error) {
+    return res.status(500).send("internal error in processing")
+  }
+}
+
+
+export async function displayUser(req,res){
+try {
+  const data=await userSchema.find({}).then((data)=>{
+    return res.status(201).send(data)
+  })
+
+} catch (error) {
+  return res.status(500).send("invalid error")
+}
+
 }

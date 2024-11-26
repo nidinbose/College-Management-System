@@ -20,7 +20,7 @@ const Enquiries = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3003/api/enquiries/${id}`);
+      await axios.delete(`http://localhost:3003/api/deletecontact/${id}`);
       setEnquiries((prev) => prev.filter((enquiry) => enquiry._id !== id)); 
       alert('Enquiry deleted successfully.');
     } catch (err) {

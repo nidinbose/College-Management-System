@@ -37,16 +37,13 @@ const AppliedApplication = () => {
 
   const handleReject = async (application) => {
     try {
-      // Step 1: Send rejection email
-      await axios.post('http://localhost:3003/api/send-rejection-email', {
+        await axios.post('http://localhost:3003/api/send-rejection-email', {
         email: application.email,
         name: `${application.firstName} ${application.lastName}`,
       });
 
-      // Step 2: Delete application
-      await axios.delete(`http://localhost:3003/api/delete-application/${application._id}`);
+         await axios.delete(`http://localhost:3003/api/deleteapply/${application._id}`);
 
-      // Step 3: Update the UI
       setApplications((prevApplications) =>
         prevApplications.filter((app) => app._id !== application._id)
       );

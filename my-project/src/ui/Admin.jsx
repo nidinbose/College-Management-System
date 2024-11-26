@@ -101,6 +101,31 @@ const Admin = () => {
     navigate("/login");
   };
 
+  const events = [
+    {
+      id: 1,
+      title: "Coding Hackathon 2024",
+      description: "Participate in an exciting 24-hour coding competition.",
+      date: "2024-12-10",
+      time: "10:00 AM",
+    },
+    {
+      id: 2,
+      title: "AI & ML Conference",
+      description: "Explore the future of artificial intelligence and machine learning.",
+      date: "2024-12-15",
+      time: "9:00 AM",
+    },
+    {
+      id: 3,
+      title: "Cultural Fest",
+      description: "A celebration of diverse cultures with music, food, and art.",
+      date: "2024-12-20",
+      time: "5:00 PM",
+    },
+  ];
+  
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen text-lg">
@@ -113,13 +138,13 @@ const Admin = () => {
     <div className="flex h-full">
         <div>
       <aside
-        className=" h-full bg-[#A0CE4E] overflow-y-auto"
+        className=" h-full bg-[#A0CE4E] overflow-y-auto p-3"
       >
          <div className="flex items-center gap-4 mb-8">
           <img src="/images/pl.png" alt="Logo" className="w-12 h-12" />
-          <h1 className="text-lg font-bold">Cambridge College</h1>
+          <h1 className="text-lg font-bold text-white">Cambridge College</h1>
         </div>
-        <ul className="space-y-4">
+        <ul className="space-y-4 p-3 text-white">
           <li className="text-start font-bold text-gray-300">Main</li>
           <li>
             <Link
@@ -206,6 +231,8 @@ const Admin = () => {
               <FaChalkboardTeacher className="w-7 h-7" /> Staff List
             </Link>
           </li>
+
+         
           <li>
             <Link
               to="/courses"
@@ -217,7 +244,7 @@ const Admin = () => {
         </ul>
         <button
           onClick={handleLogout}
-          className="w-full py-2 mt-6 bg-red-500 rounded hover:bg-red-600"
+          className="w-full py-2 mt-6 bg-red-500 rounded hover:bg-red-600 text-white font-bold"
         >
           Logout
         </button>
@@ -226,30 +253,25 @@ const Admin = () => {
       <div
         className="flex flex flex-col w-full"
       >
-        <header className="p-4 bg-white shadow-md flex items-center justify-end">
+        <header className="p-4 bg-[#A0CE4E] shadow-md flex items-center justify-end">
          <div className="flex items-center justify-end gap-5">
-         <h2 className="text-lg font-semibold ">Welcome, {user.username}</h2>
+         <h2 className="text-lg font-semibold text-white font-bold">Welcome: <span className="">{user.username}</span></h2>
          <img
     src={user.image}
     alt={user.username || "User Photo"}
     className="h-20 w-20 rounded-full border border-gray-300 object-cover"
   />
          </div>
-          <button
-            className="p-2 bg-blue-600 text-white rounded lg:hidden"
-            onClick={handleToggleSidebar}
-          >
-            {isSidebarOpen ? <HiX className="w-6 h-6" /> : <HiOutlineMenuAlt3 className="w-6 h-6" />}
-          </button>
+        
         </header>
 
-          <main className="flex-grow p-6 bg-gray-100">
+          <main className="flex-grow p-6 bg-[#1B2C39]">
          
            <div className="flex items-center justify-between">
-           <h1 className="text-xl font-bold mb-4">Overview</h1>
+           <h1 className="text-xl font-bold mb-4 text-[#A0CE4E]">Overview</h1>
            <div className="space-x-4">
-           <button className="font-bold text-yellow-400 text-3xl"><AiFillMessage /></button>
-           <button className="font-bold text-yellow-400 text-3xl"><IoMdNotifications /></button>
+           <Link to={`/addnotify`}><button className="font-bold text-[#A0CE4E] text-3xl"><AiFillMessage /></button></Link>
+           <Link to={`/notify`}><button className="font-bold text-[#A0CE4E] text-3xl"><IoMdNotifications /></button></Link>
            </div>
            </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-5  gap-10">
@@ -284,11 +306,10 @@ const Admin = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 p-6 gap-5">
-          <section className="border shadow-xl w-full h-full">
-  <h1 className="text-lg font-bold mb-4">Notifications</h1>
-  <div className="space-y-4">
+          <section className="border shadow-xl w-full max-w-3xl mx-auto p-6 bg-gray-50 rounded-lg overflow-y-auto h-[60vh]">
+  <h1 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Notifications</h1>
+  <div className="space-y-6">
     {notifications.map((notification) => {
-     
       const borderColor =
         notification.Type === 'Urgent'
           ? 'border-red-500'
@@ -296,28 +317,32 @@ const Admin = () => {
           ? 'border-yellow-400'
           : notification.Type === 'General'
           ? 'border-green-500'
-            : notification.Type === 'Reminder'
+          : notification.Type === 'Reminder'
           ? 'border-violet-400'
-          : 'border-blue-500'; 
+          : 'border-blue-500';
 
-      const bgColor =
+      const textColor =
         notification.Type === 'Success'
           ? 'text-green-600'
           : notification.Type === 'Error'
           ? 'text-red-600'
           : notification.Type === 'Warning'
           ? 'text-yellow-600'
-          : 'text-blue-600'; 
+          : 'text-blue-600';
 
       return (
         <div
           key={notification.id}
-          className={`bg-white p-4 rounded shadow border-l-4 ${borderColor}`}
+          className={`bg-white p-5 rounded-lg shadow-md border-l-4 hover:shadow-lg transition-shadow duration-300 ease-in-out ${borderColor}`}
         >
-          <h2 className={`font-bold`}>{notification.Subject}</h2>
-          <p className="text-gray-600">{notification.Matter}</p>
-          <h1 className={`font-semibold bg-${bgColor}`}>{notification.Type}</h1>
-          <p className="text-sm text-gray-400">
+          <h2 className="text-lg font-semibold text-gray-800">{notification.Subject}</h2>
+          <p className="text-gray-600 mt-2">{notification.Matter}</p>
+          <span
+            className={`inline-block mt-3 px-3 py-1 text-sm font-medium rounded-full ${textColor} bg-opacity-10`}
+          >
+            {notification.Type}
+          </span>
+          <p className="text-sm text-gray-500 mt-4">
             {new Date(notification.Date).toLocaleDateString()} at{' '}
             {new Date(notification.Date).toLocaleTimeString()}
           </p>
@@ -327,11 +352,46 @@ const Admin = () => {
   </div>
 </section>
 
-<section className="p-5 h-full w-full border shadow-xl">
-  <div>
-    <h1>Upcomming events</h1>
+
+<section className="p-6 h-[60vh] overflow-y-auto w-full max-w-4xl mx-auto border rounded-lg shadow-lg bg-gray-50">
+  <div className="mb-6 border-b pb-4">
+    <h1 className="text-2xl font-bold text-gray-800">Upcoming Events</h1>
+    <p className="text-gray-600 mt-1 text-sm">
+      Stay updated with the latest events happening soon!
+    </p>
+  </div>
+  <div className="space-y-6">
+    {events.map((event) => (
+      <div
+        key={event.id}
+        className="flex items-start p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-500"
+      >
+        <div className="flex-shrink-0">
+          <div className="bg-blue-500 text-white font-bold rounded-full h-12 w-12 flex items-center justify-center">
+            {new Date(event.date).toLocaleDateString('en-US', {
+              day: '2-digit',
+              month: 'short',
+            })}
+          </div>
+        </div>
+        <div className="ml-4">
+          <h2 className="text-lg font-semibold text-gray-800">{event.title}</h2>
+          <p className="text-gray-600 mt-2">{event.description}</p>
+          <div className="text-sm text-gray-500 mt-3">
+            <span>
+              <strong>Date:</strong> {new Date(event.date).toLocaleDateString()}
+            </span>
+            {' • '}
+            <span>
+              <strong>Time:</strong> {event.time}
+            </span>
+          </div>
+        </div>
+      </div>
+    ))}
   </div>
 </section>
+
 
           </div>
         </main>

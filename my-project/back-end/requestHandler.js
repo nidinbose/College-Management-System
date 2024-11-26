@@ -650,3 +650,50 @@ export async function getNotifyList(req,res){
     
   }
 }
+
+export async function deleteNotify(req,res){
+  try {
+    const {id}=req.params
+    await notifySchema.deleteOne({_id:id}).then(()=>{
+      return res.status(201).send("sucessfully deleted")
+    })
+  } catch (error) {
+    return res.status(500).send("internal error")
+  }
+}
+
+export async function approveEmail(req,res){
+  const { email, name } = req.body;
+
+  try {
+    await transporter.sendMail({
+      from: 'nidinbose999@gmail.com',
+      to: email,
+      subject: 'Application Approved',
+      text: `Dear ${name},\n\nYour application has been approved!\n\nBest regards,\nTeam`,
+    });
+
+    res.status(200).json({ message: 'Approval email sent successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to send approval email' });
+  }
+}
+
+export async function rejectEmail(req,res){
+  const { email, name } = req.body;
+
+  try {
+    await transporter.sendMail({
+      from: 'your-email@gmail.com',
+      to: email,
+      subject: 'Application Rejected',
+      text: `Dear ${name},\n\nWe regret to inform you that your application has been rejected.\n\nBest regards,\nTeam`,
+    });
+
+    res.status(200).json({ message: 'Rejection email sent successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to send rejection email' });
+  }
+}

@@ -50,6 +50,9 @@ router.route('/getapplied').get(request.getApplied)
 router.route('/getcontactslist').get(request.contactsList)
 router.route('/getnotification').get(request.getNotifyList)
 
+router.route('/deletenotify/:id').delete(request.deleteNotify)
+
+router.route('/approveemail').post(request.approveEmail)
 
 
 

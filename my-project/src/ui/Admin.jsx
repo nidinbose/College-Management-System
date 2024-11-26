@@ -113,9 +113,7 @@ const Admin = () => {
     <div className="flex h-full">
         <div>
       <aside
-        className={`fixed cursor-pointer top-0 left-0 h-full bg-[#A0CE4E] overflow-y-auto z-50 text-white p-6 transform transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 w-64 z-40`}
+        className=" h-full bg-[#A0CE4E] overflow-y-auto"
       >
          <div className="flex items-center gap-4 mb-8">
           <img src="/images/pl.png" alt="Logo" className="w-12 h-12" />
@@ -226,9 +224,7 @@ const Admin = () => {
       </aside>
       </div>
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${
-          isSidebarOpen ? "ml-64" : "ml-0"
-        } lg:ml-64`}
+        className="flex flex flex-col w-full"
       >
         <header className="p-4 bg-white shadow-md flex items-center justify-end">
          <div className="flex items-center justify-end gap-5">

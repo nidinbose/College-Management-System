@@ -24,7 +24,7 @@ const AppliedApplication = () => {
 
   const handleApprove = async (application) => {
     try {
-      await axios.post('http://localhost:3003/api/send-approval-email', {
+      await axios.post('http://localhost:3003/api/send-approveemail', {
         email: application.email,
         name: `${application.firstName} ${application.lastName}`,
       });
@@ -32,6 +32,29 @@ const AppliedApplication = () => {
     } catch (error) {
       console.error(error);
       alert('Failed to send the email.');
+    }
+  };
+
+  const handleReject = async (application) => {
+    try {
+      // Step 1: Send rejection email
+      await axios.post('http://localhost:3003/api/send-rejection-email', {
+        email: application.email,
+        name: `${application.firstName} ${application.lastName}`,
+      });
+
+      // Step 2: Delete application
+      await axios.delete(`http://localhost:3003/api/delete-application/${application._id}`);
+
+      // Step 3: Update the UI
+      setApplications((prevApplications) =>
+        prevApplications.filter((app) => app._id !== application._id)
+      );
+
+      alert(`Rejection email sent to ${application.email} and application deleted.`);
+    } catch (error) {
+      console.error(error);
+      alert('Failed to reject the application.');
     }
   };
 
@@ -70,21 +93,21 @@ const AppliedApplication = () => {
                 )}
               </tbody>
             </table>
-         <div className='flex gap-12 items-center justify-end p-5'>
-         <button
-              onClick={() => handleApprove(application)}
-              className="px-6 py-2 bg-[#A0CE4E] text-white font-semibold rounded-lg hover:bg-emerald-500 transition"
-            >
-              Approve 
-            </button>
+            <div className="flex gap-12 items-center justify-end p-5">
+              <button
+                onClick={() => handleApprove(application)}
+                className="px-6 py-2 bg-[#A0CE4E] text-white font-semibold rounded-lg hover:bg-emerald-500 transition"
+              >
+                Approve
+              </button>
 
-            <button
-              
-              className="px-6 py-2 bg-[#A0CE4E] text-white font-semibold rounded-lg hover:bg-red-600 transition"
-            >
-              Reject 
-            </button>
-         </div>
+              <button
+                onClick={() => handleReject(application)}
+                className="px-6 py-2 bg-[#A0CE4E] text-white font-semibold rounded-lg hover:bg-red-600 transition"
+              >
+                Reject
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -93,4 +116,5 @@ const AppliedApplication = () => {
 };
 
 export default AppliedApplication;
+
 

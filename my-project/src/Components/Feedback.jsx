@@ -3,10 +3,10 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaGripLinesVertical } from "react-icons/fa";
 const Feedback = () => {
   const Data = [
-    { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2fzplcp24ceMoVb7jlXCPcf6A6S25ucKWmQ&s", name: "John Doe", designation: "CHAIRMAN" },
-    { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsaM-YiqDpLq51g4gl2YQqlKm-9pffDuhMow&s", name: "Jane Smith", designation: "VICE CHAIRPERSON " },
-    { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiVSQFDMQ3dAZQunPN5uDgxiXEfUc6lxDw8yG80i-00oKcNUIJcestWo-Clo4XkvH3yu0&usqp=CAU", name: "Alice Johnson", designation: "SECRETARY" },
-    { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2fzplcp24ceMoVb7jlXCPcf6A6S25ucKWmQ&s", name: "Bob Brown", designation: "  CO - SECRETARY" }
+    { image: "https://media.licdn.com/dms/image/D5612AQGQWP0KODur4w/article-cover_image-shrink_720_1280/0/1688135687613?e=2147483647&v=beta&t=OVi7Z0f_qIOrbdH0hh1eLtt7zcs7oeWocfrb2s8gjw4", name: "Prof D Viswanath", designation: "CHAIRMAN" },
+    { image: "https://t3.ftcdn.net/jpg/04/60/91/88/360_F_460918802_XVCymFr7MoziFpnInbTDvrlblYhvAOi2.jpg", name: "Prof Akhilian cs", designation: "VICE CHAIRPERSON " },
+    { image: "https://www.shutterstock.com/image-photo/happy-mid-aged-older-business-600nw-2322385015.jpg", name: "Patrik Johnson", designation: "SECRETARY" },
+    { image: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9655bb83693347.5d441357a442c.jpg", name: "David john", designation: "  CO - SECRETARY" }
   ]
 
   return (

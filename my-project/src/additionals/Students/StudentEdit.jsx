@@ -161,6 +161,18 @@ const StudentsEdit = () => {
                                 placeholder="Enter Blood Group"
                             />
                         </div>
+
+                        <div className="mb-4">
+                            <label className="text-sm font-semibold text-white">Email Address</label>
+                            <input
+                                type="text"
+                                name="email"
+                                value={data.email || ""}
+                                onChange={handleChange}
+                                className="block w-full mt-2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 focus:outline-none"
+                                placeholder="Enter Blood Group"
+                            />
+                        </div>
     
                         <div className="mb-6">
                             <label className="text-sm font-semibold text-white">Date of Birth</label>

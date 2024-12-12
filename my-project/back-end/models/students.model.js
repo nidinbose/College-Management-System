@@ -8,6 +8,7 @@ const studentsSchema = new mongoose.Schema({
   semester: { type: String},
   bloodType: { type: String },
   dateOfBirth: { type: String },
+  email: { type: String },
   photo: { type: String },
 
 });

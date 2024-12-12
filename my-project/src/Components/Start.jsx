@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Start = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -61,13 +62,15 @@ const Start = () => {
           animate={{ x: 0 }} 
           transition={{ type: 'spring', stiffness: 300  }} 
         >
-          <motion.button
+       <Link to={`/applaynow`}>
+       <motion.button
             className='bg-[#A0CE4E] w-full md:w-[14vw] text-center h-14 font-semibold hover:bg-white hover:text-black'
             whileHover={{ x: 10, y: -10 }} 
             transition={{ type: 'spring', stiffness: 300 }}
           >
             ADMISSIONS 2024 - 25
           </motion.button>
+       </Link>
         </motion.div>
       </div>
     </section>

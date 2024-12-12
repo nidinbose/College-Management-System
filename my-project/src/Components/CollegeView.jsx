@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 
 const CollegeView = () => {
@@ -27,12 +28,16 @@ const CollegeView = () => {
 </div>
 
 <div className="flex flex-col sm:flex-row gap-10 items-center justify-center">
-  <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#A0CE4E] text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 hover:scale-105 transform transition duration-300">
+<Link to={`/contact`}>
+<button className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#A0CE4E] text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 hover:scale-105 transform transition duration-300">
     Contact Us <FaArrowRight className="text-sm md:text-base" />
   </button>
-  <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#A0CE4E] text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 hover:scale-105 transform transition duration-300">
+</Link>
+<Link to={`/applaynow`}>
+<button className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#A0CE4E] text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 hover:scale-105 transform transition duration-300">
     Apply Now <FaArrowRight className="text-sm md:text-base" />
   </button>
+</Link>
 </div>
 
       </div>

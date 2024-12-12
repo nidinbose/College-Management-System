@@ -5,7 +5,7 @@ const Gallary = () => {
     const [active, setActive] = useState("https://zolostays.com/blog/wp-content/uploads/2024/02/acharya-institute-of-technology-bangalore.jpg");
   const data = [
     { imgelink: "https://zolostays.com/blog/wp-content/uploads/2024/02/acharya-institute-of-technology-bangalore.jpg" },
-    { imgelink: "https://www.acharya.ac.in/demo/about/img/overview/11.webp" },
+    { imgelink: "https://www.mbacollegesbangalore.in/wp-content/uploads/2017/08/Acharya-Institute-of-Technology-2.jpg" },
     { imgelink: "https://i.pinimg.com/736x/16/d8/f1/16d8f110b0cab10e274ffe24050594c3.jpg" },
     { imgelink: "https://www.mbacollegesbangalore.in/wp-content/uploads/2017/08/Acharya-Institute-of-Technology-2.jpg" },
     { imgelink: "https://lh3.googleusercontent.com/-gNnLnOosol0/WCI6r8n3nKI/AAAAAAAAABo/1I79pk_bkXItZyjNIBg8_lJbn5t5ApYhgCLIB/photo.jpg" },

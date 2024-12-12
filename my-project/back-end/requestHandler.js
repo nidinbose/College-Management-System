@@ -186,7 +186,7 @@ export async function Home(req, res) {
   try {
         const token = req.headers.authorization?.split(" ")[1];
 
-    if (!token) {
+    if (!token) {r
       return res.status(401).json({ msg: 'Unauthorized access. No token provided.' });
     }
       const decoded = pkg.verify(token, process.env.JWT_KEY);
@@ -227,12 +227,12 @@ export async function Home(req, res) {
 
 export async function addStudents(req,res){
   try {
-    const {name,studentid,Class,department,semester,bloodType,dateOfBirth,photo}=req.body
+    const {name,studentid,Class,department,semester,bloodType,dateOfBirth,email,photo}=req.body
 
-    if(!(name&studentid&Class,department,semester,bloodType,dateOfBirth,photo))
+    if(!(name&&studentid&&Class&&department&&semester&&email&&bloodType&&dateOfBirth&&photo))
       return res.status(400).send("Required Fields")
 
-    await studentsSchema.create({name,studentid,Class,department,semester,bloodType,dateOfBirth,photo}).then(()=>{
+    await studentsSchema.create({name,studentid,Class,department,semester,bloodType,dateOfBirth,email,photo}).then(()=>{
       return res.status(201).send("Student Added Successfully")
     })
   } catch (error) {
@@ -272,6 +272,9 @@ export async function getStudentsOne(req,res){
     res.status(500).send({ error: "Server error" });
   }
 }
+
+
+
 
 export async function getStudentEdit(req, res) {
   try {
@@ -752,4 +755,25 @@ try {
   return res.status(500).send("invalid error")
 }
 
+}
+
+export async function getStudentData(req, res) {
+  try {
+    const { name } = req.body;
+
+    if (!name) {
+      return res.status(400).json({ message: "name is required" });
+    }
+
+   
+    const data = await studentsSchema.findOne({ name });
+
+    if (!data) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error fetching student data:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 }

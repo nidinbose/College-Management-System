@@ -55,6 +55,7 @@ router.route('/deleteapply/:id').delete(request.deleteapply)
 router.route('/deletecontact/:id').delete(request.deleteEnquries)
 
 router.route('/userslists').get(request.displayUser)
+router.route('/getstudentdata').get(request.getStudentData)
 
 router.route('/approveemail').post(request.approveEmail)
 

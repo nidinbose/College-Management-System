@@ -121,6 +121,10 @@ const ViewStudent = () => {
                 <span className="text-gray-600">Date of Birth:</span>
                 <span className="font-medium text-gray-900 ml-2">{data.dateOfBirth}</span>
               </div>
+              <div className="bg-emerald-50 p-3 rounded-md border">
+                <span className="text-gray-600">Email address:</span>
+                <span className="font-medium text-gray-900 ml-2">{data.email}</span>
+              </div>
             </div>
             <div className="p-6 w-full lg:w-[90vw] md:w-[84vw] md:ml-10 lg:ml-7 mx-auto border border-[#A0CE4E] rounded-xl shadow-md space-y-4 bg-transparant">
               <h2 className="text-xl font-semibold text-[#A0CE4E]">Student Marks</h2>

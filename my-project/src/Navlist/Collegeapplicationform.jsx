@@ -57,7 +57,7 @@ const CollegeApplicationForm = () => {
   };
 
   return (
-    <div className="max-w-full mx-auto p-6 sm:p-8 md:p-12 xl:p-16 bg-[#1D1D1D] shadow-lg">
+    <div className="max-w-full mx-auto p-6 sm:p-8 md:p-12 xl:p-16 bg-[#1D1D1D] shadow-lg overflow-x-auto">
       <ToastContainer />
       <div className="flex flex-col sm:flex-row justify-center items-center mb-6">
         <img src="/images/pl.png" alt="College Logo" className="h-16 w-16 mr-4" />
@@ -66,11 +66,11 @@ const CollegeApplicationForm = () => {
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6">
         <h3 className="text-xl sm:text-2xl font-semibold text-center text-[#A0CE4E]">Application Form</h3>
         <Link to={``}>
-          <h3 className="text-sm font-semibold text-center text-blue-400 underline">Mobile form link</h3>
+          <h3 className="text-sm font-semibold text-center text-blue-400 underline">Use computer to access form</h3>
         </Link>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4">
-      <table className="w-full bg-[#A0CE4E] rounded-xl border-[#A0CE4E] overflow-x-scroll ">
+      <table className="w-full bg-[#A0CE4E] rounded-xl border-[#A0CE4E] overflow-x-auto">
   <tbody>
     <tr>
       <td className="p-4 border text-violet-600">First Name</td>

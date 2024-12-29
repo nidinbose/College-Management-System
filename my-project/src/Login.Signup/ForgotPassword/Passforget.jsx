@@ -10,12 +10,12 @@ const ResetPassword = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
-  // Handle form field changes
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Validate inputs
+ 
   const validateInputs = () => {
     let formErrors = {};
     if (!formData.email) {
@@ -34,7 +34,7 @@ const ResetPassword = () => {
     return formErrors;
   };
 
-  // Handle form submission
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateInputs();

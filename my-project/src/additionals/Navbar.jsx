@@ -169,7 +169,7 @@ const Navbar = () => {
     </Link>
   ))}
   
-  {/* Sign Up Button */}
+ 
   <div className="mt-8 w-full flex flex-col items-center justify-center ">
  {!user && (
  <Link to={`/login`}>

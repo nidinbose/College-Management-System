@@ -1,40 +1,25 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../additionals/Navbar";
 
 function Login() {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    role: "student", 
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "", role: "student" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validateForm = () => {
     let formErrors = {};
-    if (!formData.email) {
-      formErrors.email = "Email is required";
-    }
-    if (!formData.password) {
-      formErrors.password = "Password is required";
-    }
+    if (!formData.email) formErrors.email = "Email is required";
+    if (!formData.password) formErrors.password = "Password is required";
     return formErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -43,41 +28,18 @@ function Login() {
 
     setLoading(true);
     setErrors({});
-
     try {
       const response = await fetch("http://localhost:3003/api/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email, password: formData.password }),
       });
-
       const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || "Something went wrong");
-      }
+      if (!response.ok) throw new Error(result.error || "Something went wrong");
 
       const { role, token } = result;
-      localStorage.setItem("token", token); 
-
-      switch (role) {
-        case "admin":
-          navigate("/admin");
-          break;
-        case "staff":
-          navigate("/staff");
-          break;
-        case "student":
-          navigate("/students");
-          break;
-        default:
-          navigate("/"); 
-          break;
-      }
+      localStorage.setItem("token", token);
+      navigate(role === "admin" ? "/admin" : role === "staff" ? "/staff" : "/students");
     } catch (error) {
       setErrors({ submit: error.message });
     } finally {
@@ -86,87 +48,75 @@ function Login() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-     
-      <div className="flex justify-center items-center flex-col md:flex-row xl:mt-[200px]">
-        <div className="logo mb-6 md:mb-0">
-          <img src="/images/pl.png" alt="logo" className="w-24 md:w-36 lg:w-48 xl:w-60" />
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="bg-white/10 border flex flex-col lg:flex-row items-center lg:items-start max-w-5xl">
+             <div className="w-full lg:w-1/2">
+          <img
+            src="/images/a.avif"
+            alt="Login Illustration"
+            className="rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg w-full h-72 lg:h-full object-cover"
+          />
         </div>
+        <div className="p-8 w-full lg:w-1/2">
+          <h2 className="text-3xl font-bold text-gray-700 mb-4">Welcome Back!</h2>
+          <p className="text-gray-500 mb-6">
+            Log in with your credentials to access your account.
+          </p>
 
-        <div className="lp flex flex-col md:flex-row items-center md:items-start gap-8">
-          <div className="image">
-            <img
-              src="/images/a.avif"
-              alt=""
-              className="w-80 h-auto md:w-96 md:h-[70vh] lg:w-[55vw] lg:h-[70vh] object-cover"
-            />
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+              <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none"
+                placeholder="Enter your email"
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-gray-700 font-medium mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none"
+                placeholder="Enter your password"
+              />
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+            </div>
+            <div className="flex justify-between items-center">
+              <Link to="/forgot-password" className="text-blue-500 text-sm hover:underline">
+                Forgot Password?
+              </Link>
+            </div>
 
-          <div className="field p-4 md:w-1/2">
-            <h1 className="text-lg font-semibold mb-4 text-[#A0CE4E]">Welcome Back :)</h1>
-            <b className="text-sm text-gray-500 mb-8">
-              To keep connected with us, please login with your personal
-              information using your email address and password.
-            </b>
-
-            <form onSubmit={handleSubmit}>
-              <div className="email mb-4 bg-gray-100 p-2 rounded-lg relative mt-4">
-                <p className="text-xs text-gray-400 font-semibold">
-                  Email Address
-                </p>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  id="email1"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full border-none bg-transparent text-black mt-2 focus:outline-none text-sm"
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-2">{errors.email}</p>
-                )}
-              </div>
-
-              <div className="password mb-4 bg-gray-100 p-2 rounded-lg relative">
-                <p className="text-xs text-gray-400 font-semibold">Password</p>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  id="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="w-full border-none bg-transparent text-black mt-2 focus:outline-none text-sm"
-                />
-                {errors.password && (
-                  <p className="text-red-500 text-xs mt-2">{errors.password}</p>
-                )}
-              </div>
-
-              <div className="forgot-password mb-4 text-right">
-                <Link to="/forgot-password" className="text-[#A0CE4E] text-sm hover:underline">
-                  Forgot Password?
-                </Link>
-              </div>
-
-              {errors.submit && (
-                <p className="text-red-500 text-xs mb-4">{errors.submit}</p>
-              )}
-
-              <div className="btn flex gap-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-[13vw] h-[7vh] py-3 bg-[#A0CE4E] text-white font-semibold rounded-full hover:bg-pink-600 text-center ml-[8vw]"
-                >
-                  {loading ? "Logging in..." : "Login"}
-                </button>
-
-              {/* <Link to={`/signup`}>  <button className="w-[12vw] py-3 bg-[#A0CE4E] text-white font-semibold rounded-full hover:bg-pink-600">Create account</button></Link> */}
-              </div>
-            </form>
-          </div>
+            {errors.submit && (
+              <p className="text-red-500 text-center text-sm mb-4">{errors.submit}</p>
+            )}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-pink-500 text-white font-bold py-2 rounded-lg hover:bg-pink-600 transition duration-300"
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </form>
+          <p className="text-center text-gray-500 mt-4">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-500 hover:underline">
+              Sign up
+            </Link>
+          </p>
         </div>
       </div>
     </div>
